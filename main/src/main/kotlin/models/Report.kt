@@ -1,5 +1,6 @@
 package models
 
+import Utils.isValidEmail
 import i18n.t
 import java.io.Serializable
 
@@ -18,15 +19,15 @@ class Report: Model() {
                 "date" to hashMapOf("type" to "Long"),
                 "period" to hashMapOf("type" to "Long"),
                 "type" to hashMapOf("type" to "Enum", "values" to ReportTypes),
-                "company" to hashMapOf("type" to "Link","display_field" to "name")
+                "company" to hashMapOf("type" to "Link","display_field" to "name"),
+                "email" to hashMapOf("type" to "String")
         )
 
     override val modelName:String
         get() = "Reports"
 
-    override fun validate(isNew:Boolean): HashMap<String,Any>? {
+    override fun validate(isNew:Boolean,user_id:String?): HashMap<String,Any>? {
         val errors = HashMap<String,Any>()
-
         if (this["date"] == null) {
             errors["date"] = t("Не указана дата отчета")
         } else {
@@ -38,6 +39,11 @@ class Report: Model() {
             }
         }
 
+        if (this["email"] !== null && this["email"].toString().isNotEmpty()) {
+            if (!isValidEmail(this["email"].toString())) {
+                errors["email"] = t("Указан некорректный email")
+            }
+        }
 
         if (this["period"] == null) {
             errors["period"] = t("Не указан период отчета")
@@ -71,7 +77,7 @@ class Report: Model() {
 
         var condition = "@rid=${this["company"]}"
         val options = hashMapOf("condition" to condition)
-        var items = Company().getList(options as? HashMap<String, Any>)
+        var items = Company().getList(options as? HashMap<String, Any>,user_id)
         if (items.size == 0) errors["company"] = t("Выбрана некорректная организация")
 
         condition = "type=${this["type"]} AND period=${this["period"]}"

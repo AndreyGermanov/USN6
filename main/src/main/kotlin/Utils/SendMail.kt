@@ -1,6 +1,5 @@
 package Utils
 
-import org.json.simple.JSONObject
 import java.util.*
 import javax.activation.DataHandler
 import javax.activation.FileDataSource
@@ -14,9 +13,11 @@ internal class EmailAuthenticator(private val login: String, private val passwor
     }
 }
 
+/**
+ * Helper object, used to construct and send email messages with or without attachments via external SMTP server
+ */
 object SendMail {
     private var message: Message? = null
-
 
     fun init(config:HashMap<String,String>) {
         val properties = Properties()

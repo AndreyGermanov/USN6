@@ -95,6 +95,6 @@ class ReportsControllerTests {
 
     @After
     fun destroyEnvironment() {
-        TestEnvironment.destroyEnvironment()
+      //  TestEnvironment.destroyEnvironment()
     }
 }

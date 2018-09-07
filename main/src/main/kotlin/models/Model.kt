@@ -35,6 +35,10 @@ open class Model {
         get() = getFieldValue("uid") as? String ?: ""
         set(value) = setFieldValue("uid",value)
 
+    // Determines if this model depends on "user_id", e.g. only authenticated user can work with it
+    // and only with records, belongs to this "user_id
+    open val isUserDependent = true
+
     /**
      * Method used to set data record
      * @param record: Record to set
@@ -104,22 +108,22 @@ open class Model {
      * result according to rules inside "options" param. If not provided,
      * just returns all models
      * @param options: Options which defines filter, sort order, which fields to get for model
+     * @param user_id: ID of user to which affected records should belong
      * @return: ArrayList of models
      */
-    fun getList(options:HashMap<String,Any>? = null): ArrayList<Model> {
+    fun getList(options:HashMap<String,Any>? = null,user_id:String?=null): ArrayList<Model> {
         var opts = HashMap<String,Any>()
         var result = ArrayList<Model>()
         if (options != null) {
             opts = options
         }
-        opts["model"] = modelName
         if (!opts.containsKey("fields")) {
             opts["fields"] = fields
         }
         opts["field_types"] = fieldTypes
         val db = DBManager.getDB()
         if (db != null) {
-            result = db.getList(opts)
+            result = db.getList(this,opts,user_id)
         }
         return result
     }
@@ -128,17 +132,70 @@ open class Model {
      * Method returns number of models in collection, after applying filters defined in
      * [options] argument. If no argument provided, returns count of all items in collection
      * @param options: Options which defines filter
+     * @param user_id: ID of user to which affected records should belong
      * @return Number of models in collection
      */
-    fun getCount(options: HashMap<String,Any>? = null): Int {
+    fun getCount(options: HashMap<String,Any>? = null,user_id:String?=null): Int {
         val result = 0
         var opts = HashMap<String,Any>()
         if (options != null) {
             opts = options
         }
-        opts["model"] = modelName
         val db = DBManager.getDB() ?: return result
-        return db.getCount(opts)
+        return db.getCount(this,opts,user_id)
+    }
+
+    /**
+     * Method used to get model by ID
+     * @param id: ID to search
+     * @param user_id: ID of user to which affected record should belong
+     * @return Found model or null if model not found
+     */
+    fun getItem(id:String,user_id:String?=null): Model? {
+        val db: Database? = DBManager.getDB() ?: return null
+        this.uid = id
+        return db!!.getItem(this,user_id)
+    }
+
+    /**
+     * Method used to post new model in database
+     * @param user_id: ID of user to which affected record should belong
+     * @return: Either HashMap with errors or null if no errors
+     */
+    fun postItem(user_id:String?=null): HashMap<String,Any> {
+        val result = validate(true,user_id)
+        if (result != null) {
+            return result
+        }
+        val db = DBManager.getDB() ?: return hashMapOf("general" to "Database connection error")
+        val model = db.postItem(this,user_id)
+        return model?.getRecord() ?: hashMapOf("general" to "Internal error when save to DB") as HashMap<String, Any>
+    }
+
+    /**
+     * Method used to update this model in database
+     * @param user_id: ID of user to which affected records should belong
+     * @return HashMap which is either updated record or information about validation or system errors
+     */
+    fun putItem(user_id:String?=null): HashMap<String,Any> {
+        val result = validate(false,user_id)
+        if (result != null) {
+            return result
+        }
+        val db = DBManager.getDB() ?: return hashMapOf("general" to "Database connection error")
+        val model = db.putItem(this,user_id)
+        return model?.getRecord() ?: hashMapOf("general" to "Internal error when save to DB") as HashMap<String, Any>
+
+    }
+
+    /**
+     * Method used to delete this model from database
+     * @param user_id: ID of user to which affected records should belong
+     * @return HashMap which is either removed record or information about validation or system errors
+     */
+    fun deleteItems(ids:String,user_id:String?=null): HashMap<String,Any>? {
+        val db = DBManager.getDB() ?: return hashMapOf("errors" to hashMapOf("general" to "Database connection error"))
+        return db.deleteItems(this,ids,user_id)
     }
 
     /**
@@ -182,57 +239,7 @@ open class Model {
      * @param isNew: Do we check a new item
      * @return: Either Hashmap<String,String> with errors or null if no errors
      */
-    open fun validate(isNew:Boolean = false):HashMap<String,Any>? {
+    open fun validate(isNew:Boolean = false,user_id:String?=null):HashMap<String,Any>? {
         return null
     }
-
-    /**
-     * Method used to get model by ID
-     * @param id: ID to search
-     * @return Found model or null if model not found
-     */
-    fun getItem(id:String): Model? {
-        val db: Database? = DBManager.getDB() ?: return null
-        this.uid = id
-        return db!!.getItem(this)
-    }
-
-    /**
-     * Method used to post new model in database
-     * @return: Either HashMap with errors or null if no errors
-     */
-    fun postItem(): HashMap<String,Any> {
-        val result = validate(true)
-        if (result != null) {
-            return result
-        }
-        val db = DBManager.getDB() ?: return hashMapOf("general" to "Database connection error")
-        val model = db.postItem(this)
-        return model?.getRecord() ?: hashMapOf("general" to "Internal error when save to DB") as HashMap<String, Any>
-    }
-
-    /**
-     * Method used to update this model in database
-     * @return HashMap which is either updated record or information about validation or system errors
-     */
-    fun putItem(): HashMap<String,Any> {
-        val result = validate(false)
-        if (result != null) {
-            return result
-        }
-        val db = DBManager.getDB() ?: return hashMapOf("general" to "Database connection error")
-        val model = db.putItem(this)
-        return model?.getRecord() ?: hashMapOf("general" to "Internal error when save to DB") as HashMap<String, Any>
-
-    }
-
-    /**
-     * Method used to delete this model from database
-     * @return HashMap which is either removed record or information about validation or system errors
-     */
-    fun deleteItems(ids:String): HashMap<String,Any>? {
-        val db = DBManager.getDB() ?: return hashMapOf("errors" to hashMapOf("general" to "Database connection error"))
-        return db.deleteItems(this,ids)
-    }
-
 }

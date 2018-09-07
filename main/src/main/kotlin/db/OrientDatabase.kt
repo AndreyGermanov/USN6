@@ -96,42 +96,6 @@ class OrientDatabase(// URL to database, including host and port
     }
     */
 
-    /*******************************************************************
-     * Implementation of CRUD methods, defined in "Database" interface *
-     *******************************************************************/
-    override fun getCount(options: HashMap<String,Any>): Int {
-        var query = "SELECT count(*) as number FROM ${options["model"].toString()}"
-        var condition = ""
-        if (options.containsKey("condition")) {
-            condition = options["condition"].toString().trim()
-        }
-        if (options.containsKey("filter_fields") && options.containsKey("filter_value")) {
-            val filter_fields = options["filter_fields"].toString().split(",")
-            val filter_field_conditions = ArrayList<String>()
-            val filter_value = options["filter_value"].toString()
-            for (filter_field in filter_fields) {
-                filter_field_conditions.add("$filter_field.toLowerCase() like '$filter_value%'")
-            }
-            val filter_field_condition = "(${filter_field_conditions.toArray().joinToString(" OR ")})"
-            if (condition.isNotEmpty()) {
-                condition += " AND $filter_field_condition"
-            } else {
-                condition = filter_field_condition
-            }
-        }
-        if (condition.isNotEmpty()) {
-            query += " WHERE $condition"
-        }
-        val result = 0
-        val responseJSON = execQueryJSON(query,options) ?: return result
-        if (!responseJSON.has("result")) return result
-        val resultsArray: JSONArray = responseJSON.optJSONArray("result")
-        if (resultsArray.length()==0) return result
-        val item = resultsArray[0] as? JSONObject ?: return result
-        if (!item.has("number")) return result
-        return Integer.valueOf(item["number"].toString())
-    }
-
     /**
      * Method returns SQL expression for specified field based on this type
      * Used to construct SQL SELECT query
@@ -160,7 +124,51 @@ class OrientDatabase(// URL to database, including host and port
         }
     }
 
-    override fun getList(options: HashMap<String,Any>): ArrayList<Model> {
+    /*******************************************************************
+     * Implementation of CRUD methods, defined in "Database" interface *
+     *******************************************************************/
+    override fun getCount(model:Model,options: HashMap<String,Any>,user_id:String?): Int {
+        var query = "SELECT count(*) as number FROM ${model.modelName}"
+        var condition = ""
+        if (options.containsKey("condition")) {
+            condition = options["condition"].toString().trim()
+        }
+        if (options.containsKey("filter_fields") && options.containsKey("filter_value")) {
+            val filter_fields = options["filter_fields"].toString().split(",")
+            val filter_field_conditions = ArrayList<String>()
+            val filter_value = options["filter_value"].toString()
+            for (filter_field in filter_fields) {
+                filter_field_conditions.add("$filter_field.toLowerCase() like '$filter_value%'")
+            }
+            val filter_field_condition = "(${filter_field_conditions.toArray().joinToString(" OR ")})"
+            if (condition.isNotEmpty()) {
+                condition += " AND $filter_field_condition"
+            } else {
+                condition = filter_field_condition
+            }
+        }
+        if (model.isUserDependent) {
+            if (user_id === null)
+                return 0
+            if (condition.isNotEmpty())
+                condition += " AND user=$user_id"
+            else
+                condition = "user=$user_id"
+        }
+        if (condition.isNotEmpty()) {
+            query += " WHERE $condition"
+        }
+        val result = 0
+        val responseJSON = execQueryJSON(query,options) ?: return result
+        if (!responseJSON.has("result")) return result
+        val resultsArray: JSONArray = responseJSON.optJSONArray("result")
+        if (resultsArray.length()==0) return result
+        val item = resultsArray[0] as? JSONObject ?: return result
+        if (!item.has("number")) return result
+        return Integer.valueOf(item["number"].toString())
+    }
+
+    override fun getList(model:Model,options: HashMap<String,Any>,user_id:String?): ArrayList<Model> {
         val fields = options["fields"] as Array<String>
 
         val field_types = options["field_types"] as HashMap<String,Serializable>
@@ -173,7 +181,7 @@ class OrientDatabase(// URL to database, including host and port
             }
         }
         val result = ArrayList<Model>()
-        var query = "SELECT ${fields_sql.joinToString(",")} FROM ${options["model"].toString()}"
+        var query = "SELECT ${fields_sql.joinToString(",")} FROM ${model.modelName}"
         var condition = ""
         if (options.containsKey("condition")) {
             condition = options["condition"].toString().trim()
@@ -194,6 +202,14 @@ class OrientDatabase(// URL to database, including host and port
             } else {
                 condition = filter_field_condition
             }
+        }
+        if (model.isUserDependent) {
+            if (user_id === null)
+                return result
+            if (condition.isNotEmpty())
+                condition += " AND user=$user_id"
+            else
+                condition = "user=$user_id"
         }
         if (condition.isNotEmpty()) {
             query += " WHERE $condition"
@@ -230,10 +246,15 @@ class OrientDatabase(// URL to database, including host and port
         return result
     }
 
-    override fun getItem(model: Model): Model? {
+    override fun getItem(model: Model,user_id:String?): Model? {
         var uid = model.uid
         if (!uid.startsWith("#")) uid = "#${uid.replace("_",":")}"
-        val query = "SELECT * FROM ${model.modelName} WHERE @rid=$uid"
+        var query = "SELECT * FROM ${model.modelName} WHERE @rid=$uid"
+        if (model.isUserDependent) {
+            if (user_id === null)
+                return null
+            query += " AND user=$user_id"
+        }
         val response = execQueryJSON(query,hashMapOf())
         if (response == null || !response.has("result")) {
             return null
@@ -248,12 +269,17 @@ class OrientDatabase(// URL to database, including host and port
         return model
     }
 
-    override fun postItem(model: Model): Model? {
+    override fun postItem(model: Model,user_id:String?): Model? {
         val record = model.getRecordForDB()
         if (record.contains("uid")) {
             return null
         }
         val gson = Gson()
+        if (model.isUserDependent) {
+            if (user_id ===  null)
+                return null
+            record["user"] = user_id
+        }
         val data = gson.toJson(record)
         val query = "INSERT INTO ${model.modelName} CONTENT $data"
         val response = execQueryJSON(query,hashMapOf()) ?: return null
@@ -266,22 +292,28 @@ class OrientDatabase(// URL to database, including host and port
         return model
     }
 
-    override fun putItem(model: Model): Model? {
+    override fun putItem(model: Model,user_id:String?): Model? {
         val record = model.getRecordForDB()
         if (!record.contains("uid")) {
             return null
         }
         var uid = record["uid"].toString()
         if (!uid.startsWith("#")) uid = "#${uid.replace("_",":")}"
-
+        if (model.isUserDependent) {
+            if (user_id  == null) {
+                return null
+            }
+            record["user"] = user_id
+        }
         val gson = Gson()
         val data = gson.toJson(record)
         val query = "UPDATE ${model.modelName} CONTENT $data WHERE @rid=$uid"
+
         execQueryJSON(query,hashMapOf()) ?: return null
         return model
     }
 
-    override fun deleteItems(model:Model,ids:String): HashMap<String,Any>? {
+    override fun deleteItems(model:Model,ids:String,user_id:String?): HashMap<String,Any>? {
         val items_list = ids.split(",")
         if (items_list.isEmpty()) return null
         val items_to_delete = ArrayList<String>()
@@ -291,7 +323,12 @@ class OrientDatabase(// URL to database, including host and port
             if (!value.startsWith("#")) value = "#${value.replace("_",":")}"
             items_to_delete.add(""+value+"")
         }
-        val query = "DELETE FROM ${model.modelName} WHERE @rid IN [${items_to_delete.toArray().joinToString(",")}]"
+        var query = "DELETE FROM ${model.modelName} WHERE @rid IN [${items_to_delete.toArray().joinToString(",")}]"
+        if (model.isUserDependent) {
+            if (user_id === null)
+                return null
+            query += " AND user=$user_id"
+        }
         execQueryJSON(query,hashMapOf()) ?: return null
         return null
     }
@@ -328,7 +365,7 @@ class OrientDatabase(// URL to database, including host and port
      ********************/
     /**
      * Helper method returns first row from OrientDatabase query response
-     * @param reponseJSON:
+     * @param responseJSON:
      */
     fun getFirstResult(responseJSON:JSONObject?):JSONObject? {
         if (responseJSON==null) return null

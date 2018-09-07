@@ -24,7 +24,7 @@ class Company: Model() {
     override val modelName:String
         get() = "Companies"
 
-    override fun validate(isNew:Boolean): HashMap<String,Any>? {
+    override fun validate(isNew:Boolean,user_id:String?): HashMap<String,Any>? {
         val errors = HashMap<String,Any>()
         if (this["name"] == null) {
             errors["name"] = t("Не указано наименование")
@@ -81,7 +81,7 @@ class Company: Model() {
         val options = hashMapOf(
                 "condition" to condition
         )
-        val items = getList(options as? HashMap<String, Any>)
+        val items = getList(options as? HashMap<String, Any>,user_id)
         if (items.size>0) {
             errors["inn"] = t("Организация с таким ИНН уже есть в базе")
         }

@@ -27,7 +27,7 @@ class Spending: Model() {
     override val modelName:String
         get() = "Spendings"
 
-    override fun validate(isNew:Boolean): HashMap<String,Any>? {
+    override fun validate(isNew:Boolean,user_id:String?): HashMap<String,Any>? {
         val errors = HashMap<String,Any>()
         if (this["number"] == null) {
             errors["number"] = t("Не указан номер документа")
@@ -111,7 +111,7 @@ class Spending: Model() {
 
         val condition = "@rid=${this["company"]}"
         val options = hashMapOf("condition" to condition)
-        val items = Company().getList(options as? HashMap<String, Any>)
+        val items = Company().getList(options as? HashMap<String, Any>,user_id)
         if (items.size == 0) errors["company"] = t("Выбрана некорректная организация")
 
         return if (errors.keys.size > 0) errors else null

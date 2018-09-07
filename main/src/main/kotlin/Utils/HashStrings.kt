@@ -2,6 +2,9 @@ package Utils
 
 import java.security.MessageDigest
 
+/**
+ * Helper object to create hashes using different algos
+ */
 object HashUtils {
     fun sha512(input: String) = hashString("SHA-512", input)
 

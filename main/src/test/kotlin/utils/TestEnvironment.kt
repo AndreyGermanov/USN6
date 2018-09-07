@@ -6,6 +6,7 @@ import com.google.gson.Gson
 import db.DBManager
 import db.OrientDatabase
 import kotlinx.coroutines.experimental.async
+import kotlinx.coroutines.experimental.launch
 import org.json.simple.JSONObject
 import org.json.simple.parser.JSONParser
 import system.ConfigManager
@@ -45,10 +46,10 @@ object TestEnvironment {
         val gson = Gson()
         ConfigManager.config = parser.parse(gson.toJson(defaultConfig)) as JSONObject
         ConfigManager.saveConfig()
-        async {
+        launch {
             Application.run()
-        }
-        Thread.sleep(3000)
+        }.start()
+        Thread.sleep(2000)
         val db = DBManager.getDB() as OrientDatabase
         db.execQuery("INSERT INTO users set name='test', password='${HashUtils.sha512("test")}',surname='Test'")
     }

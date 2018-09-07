@@ -8,12 +8,14 @@ import io.ktor.application.ApplicationCallPipeline
 import io.ktor.application.call
 import io.ktor.application.install
 import io.ktor.auth.Authentication
+import io.ktor.auth.UserIdPrincipal
 import io.ktor.auth.basicAuthentication
 import io.ktor.features.Compression
 import io.ktor.features.DefaultHeaders
 import io.ktor.features.gzip
 import io.ktor.http.HttpMethod
 import io.ktor.http.HttpStatusCode
+import io.ktor.request.authorization
 import io.ktor.request.httpMethod
 import io.ktor.request.uri
 import io.ktor.response.respond
@@ -64,7 +66,8 @@ object Application {
                     }
                 }
                 this.skipWhen {
-                    if (it.request.uri == "/" || it.request.uri.startsWith("/static") || it.request.httpMethod.value === "OPTIONS")  true
+                    if (it.request.uri == "/" || it.request.uri.startsWith("/static") ||
+                            it.request.httpMethod.value === "OPTIONS")  true
                     else if (it.request.queryParameters.contains("token")) {
                         val db = db.DBManager.getDB()
                         db!!.tokenAuth(it.request.queryParameters["token"]!!) !== null
@@ -90,8 +93,8 @@ object Application {
                 routes()
             }
         }
-        Logger.log(LogLevels.INFO,"${t("Server started on port")} $port")
         server.start(true)
+        Logger.log(LogLevels.INFO,"${t("Server started on port")} $port")
     }
 
     /**

@@ -3,8 +3,11 @@
 package controllers
 
 import Utils.paramsToHashMap
+import Utils.queryStringToJSON
 import com.google.gson.Gson
 import io.ktor.application.call
+import io.ktor.auth.UserIdPrincipal
+import io.ktor.auth.authentication
 import io.ktor.content.default
 import io.ktor.content.files
 import io.ktor.content.static
@@ -28,16 +31,18 @@ interface CRUDControllerInterface {
     /**
      * Method returns number of items in collection
      * @param options: Filtering options which affect to result
+     * @param user_id: ID of user, which is used to limit results
      * @return Number of items in collection
      */
-    fun getCount(options:HashMap<String,Any>? = null):Int
+    fun getCount(options:HashMap<String,Any>? = null,user_id:String?=null):Int
 
     /**
      * Method returns list of items
      * @param options: Options which affect to result: (filtering,ordering,limit, pagination, fields)
+     * @param user_id: ID of user, which is used to limit results
      * @return Array of items, which meet the options
      */
-    fun getList(options:HashMap<String,Any>? = null):ArrayList<HashMap<String, Any>>
+    fun getList(options:HashMap<String,Any>? = null,user_id:String?=null):ArrayList<HashMap<String, Any>>
 
     /**
      * Method used to clean item of list before return
@@ -48,30 +53,34 @@ interface CRUDControllerInterface {
     /**
      * Method used to get record for item with specified ID
      * @param id: ID of item to search
+     * @param user_id: ID of user, which is used to limit results
      * @return HashMap with record fields
      */
-    fun getItem(id:String):HashMap<String,Any>?
+    fun getItem(id:String,user_id:String?=null):HashMap<String,Any>?
     /**
      * Method used to add new record of item to database
      * @param params: POST parameters, which includes all fields of record to add
+     * @param user_id: ID of user, which is used to limit results
      * @return HashMap of operation result. If success, contains JSON object for inserted item,
      * or error information otherwise
      */
-    fun postItem(params: String):HashMap<String,Any>
+    fun postItem(params: String,user_id:String?=null):HashMap<String,Any>
     /**
      * Method used to update record of item with specified ID in database
      * @param id: ID of record to update
+     * @param user_id: ID of user, which is used to limit results
      * @return HashMap of operation result. If success, contains JSON object for updated item,
      * or error information otherwise
      */
-    fun putItem(id:String,params:String): HashMap<String,Any>
+    fun putItem(id:String,params:String,user_id:String?=null): HashMap<String,Any>
     /**
      * Method used to delete records of item with specified IDs from database
      * @param ids: IDs of record to remove
+     * @param user_id: ID of user, which is used to limit results
      * @return HashMap of operation result. If error, contains JSON object with error descriptions,
      * or error information otherwise
      */
-    fun deleteItems(ids:String):HashMap<String,Any>?
+    fun deleteItems(ids:String,user_id:String?=null):HashMap<String,Any>?
 
     /**
      * Method returns new instance of model type, which is managed by this controller
@@ -87,14 +96,14 @@ open class Controller:CRUDControllerInterface {
         Application.registerController(this)
     }
 
-    override fun getCount(options: HashMap<String, Any>?): Int {
+    override fun getCount(options: HashMap<String, Any>?,user_id:String?): Int {
         return getModelInstance().getCount(options)
     }
 
-    override fun getList(options:HashMap<String,Any>?):ArrayList<HashMap<String, Any>> {
+    override fun getList(options:HashMap<String,Any>?,user_id:String?):ArrayList<HashMap<String, Any>> {
 
         val rows =  ArrayList<HashMap<String, Any>>()
-        val models = getModelInstance().getList(options)
+        val models = getModelInstance().getList(options,user_id)
         for (model in models) {
             rows.add(cleanListItem(model))
         }
@@ -109,48 +118,50 @@ open class Controller:CRUDControllerInterface {
         }
     }
 
-    override fun getItem(id:String):HashMap<String,Any>? {
-        val result = getModelInstance().getItem(id)
+    override fun getItem(id:String,user_id:String?):HashMap<String,Any>? {
+        val result = getModelInstance().getItem(id,user_id)
         if (result != null) {
             return cleanListItem(result)
         }
         return null
     }
 
-    override fun postItem(params: String):HashMap<String,Any> {
+    override fun postItem(params: String,user_id:String?):HashMap<String,Any> {
         val item = getModelInstance()
         val parser = JSONParser()
-        val json = parser.parse(params) as org.json.simple.JSONObject
+        val text = queryStringToJSON(params)
+        val json = parser.parse(text) as org.json.simple.JSONObject
         val obj = JSONObject()
         for (p in json.keys) {
             obj.put(p.toString(),json[p])
         }
         item.populate(item.JSONToHashMap(obj))
-        val result = item.postItem()
+        val result = item.postItem(user_id)
         return cleanListItem(result)
     }
 
-    override fun putItem(id:String,params:String): HashMap<String,Any> {
-        val item = getModelInstance().getItem(id)
+    override fun putItem(id:String,params:String,user_id:String?): HashMap<String,Any> {
+        val item = getModelInstance().getItem(id,user_id)
         if (item === null) {
             return hashMapOf("general" to "Could not find object to delete")
         }
+        val text = queryStringToJSON(params)
         val parser = JSONParser()
-        val json = parser.parse(params) as org.json.simple.JSONObject
+        val json = parser.parse(text) as org.json.simple.JSONObject
         val obj = JSONObject()
         for (p in json.keys) {
             obj.put(p.toString(),json[p])
         }
         item.populate(item.JSONToHashMap(obj))
-        return cleanListItem(item.putItem())
+        return cleanListItem(item.putItem(user_id))
     }
 
-    override fun deleteItems(ids:String):HashMap<String,Any>? {
+    override fun deleteItems(ids:String,user_id:String?):HashMap<String,Any>? {
         if (ids.isEmpty()) {
             return hashMapOf("general" to "Could not find items to delete")
         }
         val model = getModelInstance()
-        return model.deleteItems(ids)
+        return model.deleteItems(ids,user_id)
     }
 
     override fun getModelInstance():Model {
@@ -188,20 +199,22 @@ fun Routing.crud(modelName:String,ctrl:CRUDControllerInterface) {
     val gson = Gson()
     Application.registerController(ctrl)
     get("/api/$modelName/{id?}") {
+        val user_id = call.authentication.principal<UserIdPrincipal>()?.name
         if (call.parameters["id"] !== null) {
             if (call.parameters["id"].toString() == "count") {
-                val count = ctrl.getCount(paramsToHashMap(call.request.queryParameters)).toString()
+                val count = ctrl.getCount(paramsToHashMap(call.request.queryParameters),user_id).toString()
                 call.respondText(count)
             } else {
-                call.respondText(gson.toJson(ctrl.getItem(call.parameters["id"]!!)))
+                call.respondText(gson.toJson(ctrl.getItem(call.parameters["id"]!!,user_id)))
             }
         } else {
-            call.respondText(gson.toJson(ctrl.getList(paramsToHashMap(call.request.queryParameters))))
+            call.respondText(gson.toJson(ctrl.getList(paramsToHashMap(call.request.queryParameters),user_id)))
         }
     }
     post("/api/$modelName") {
+        val user_id = call.authentication.principal<UserIdPrincipal>()?.name
         try {
-            val result = ctrl.postItem(call.receiveText())
+            val result = ctrl.postItem(call.receiveText(),user_id)
             if (result.containsKey("uid")) {
                 call.respond(HttpStatusCode.OK, gson.toJson(hashMapOf("status" to "ok", "result" to result)))
             } else {
@@ -213,8 +226,9 @@ fun Routing.crud(modelName:String,ctrl:CRUDControllerInterface) {
         }
     }
     put("/api/$modelName/{id}") {
+        val user_id = call.authentication.principal<UserIdPrincipal>()?.name
         try {
-            val result = ctrl.putItem(call.parameters["id"]!!, call.receiveText())
+            val result = ctrl.putItem(call.parameters["id"]!!, call.receiveText(),user_id)
             if (result.containsKey("uid")) {
                 call.respond(HttpStatusCode.OK, gson.toJson(hashMapOf("status" to "ok", "result" to result)))
             } else {
@@ -226,8 +240,9 @@ fun Routing.crud(modelName:String,ctrl:CRUDControllerInterface) {
         }
     }
     delete("/api/$modelName/{id}") {
+        val user_id = call.authentication.principal<UserIdPrincipal>()?.name
         try {
-            val result = ctrl.deleteItems(call.parameters["id"]!!)
+            val result = ctrl.deleteItems(call.parameters["id"]!!,user_id)
             if (result == null || !result.containsKey("errors")) {
                 call.respond(HttpStatusCode.OK,gson.toJson(hashMapOf("status" to "ok")))
             } else {

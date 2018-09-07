@@ -130,6 +130,6 @@ class ReportKudirTests {
 
     @After
     fun destroyEnvironment() {
-        TestEnvironment.destroyEnvironment()
+       // TestEnvironment.destroyEnvironment()
     }
 }

@@ -47,7 +47,7 @@ object ConfigManager {
                     "host" to "smtp.gmail.com",
                     "port" to "465",
                     "login" to "germanovzce@gmail.com",
-                    "password" to "FckMce123",
+                    "password" to "CdeKde789",
                     "from" to "6@usn.ru"
             )
     )

@@ -28,4 +28,7 @@ class User: Model() {
     override val modelName:String
         get() = "Users"
 
+    // Determines if this model depends on "user_id", e.g. only authenticated user can work with it
+    // and only with records, belongs to this "user_id
+    override val isUserDependent = false
 }
