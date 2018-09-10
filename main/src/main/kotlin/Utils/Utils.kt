@@ -86,3 +86,15 @@ fun isValidEmail(email: CharSequence): Boolean {
     }
     return result
 }
+
+/**
+ * Method used to determine if source string starts with any of sequence
+ * from provided [array] argument
+ * @param array: ArrayList - list of string prefixes to compare with
+ * @returns Boolean: True if any match found and False otherwise
+ */
+fun String.startsWith(array:ArrayList<String>):Boolean {
+    val source = this;
+    val result = array.filter({source.startsWith(it)})
+    return result.isNotEmpty()
+}

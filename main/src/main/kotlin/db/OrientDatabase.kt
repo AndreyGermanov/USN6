@@ -308,7 +308,6 @@ class OrientDatabase(// URL to database, including host and port
         val gson = Gson()
         val data = gson.toJson(record)
         val query = "UPDATE ${model.modelName} CONTENT $data WHERE @rid=$uid"
-
         execQueryJSON(query,hashMapOf()) ?: return null
         return model
     }

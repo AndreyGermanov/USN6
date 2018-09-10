@@ -1,5 +1,6 @@
 @file:Suppress("EXPERIMENTAL_FEATURE_WARNING")
 
+import Utils.startsWith
 import controllers.*
 import db.DBManager
 import db.OrientDatabase
@@ -8,14 +9,12 @@ import io.ktor.application.ApplicationCallPipeline
 import io.ktor.application.call
 import io.ktor.application.install
 import io.ktor.auth.Authentication
-import io.ktor.auth.UserIdPrincipal
 import io.ktor.auth.basicAuthentication
 import io.ktor.features.Compression
 import io.ktor.features.DefaultHeaders
 import io.ktor.features.gzip
 import io.ktor.http.HttpMethod
 import io.ktor.http.HttpStatusCode
-import io.ktor.request.authorization
 import io.ktor.request.httpMethod
 import io.ktor.request.uri
 import io.ktor.response.respond
@@ -66,8 +65,14 @@ object Application {
                     }
                 }
                 this.skipWhen {
-                    if (it.request.uri == "/" || it.request.uri.startsWith("/static") ||
-                            it.request.httpMethod.value === "OPTIONS")  true
+                    val freeUrls = kotlin.collections.arrayListOf(
+                            "/",
+                            "/api/user/register",
+                            "/api/user/activate",
+                            "/api/user/reset_password",
+                            "/api/user/request_reset_password")
+                    if (it.request.httpMethod.value === "OPTIONS" || it.request.uri.startsWith("/static")) true
+                    else if (it.request.uri.startsWith(freeUrls)) true
                     else if (it.request.queryParameters.contains("token")) {
                         val db = db.DBManager.getDB()
                         db!!.tokenAuth(it.request.queryParameters["token"]!!) !== null
