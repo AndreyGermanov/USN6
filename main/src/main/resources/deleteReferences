@@ -1,0 +1,23 @@
+/**
+ * Body of OrientDB Function, which used to delete all references to object with specified "rid"
+ * @param rid: UID of item which references should be removed
+ */
+function deleteReferences(rid) {
+    var db = orient.getDatabase();
+    companyRid = '#'+companyRid.replace(/_/g,":");
+    var result = db.query("FIND REFERENCES "+companyRid);
+    var items = {};
+    for (i in result) {
+        var item = result[i].getProperty("referredBy");
+        var className = item.getProperty("@class").toString();
+        if (!items[className]) items[className] = [];
+        items[className].push(item.getProperty("@rid").toString());
+    }
+    var queries = [];
+    for (var className in items) {
+        for (var rid in items[className]) {
+            db.command("DELETE FROM "+className+" WHERE @rid="+items[className][rid],1);
+        }
+    }
+    return companyRid;
+}

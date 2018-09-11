@@ -1,0 +1,1 @@
+scp /home/andrey/IdeaProjects/WAB3/out/artifacts/WAB3_jar/WAB3.jar root@portal.it-port.ru:/opt/WAB3/

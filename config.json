@@ -1,0 +1,22 @@
+{
+    "mail": {
+        "password": "CdeKde789",
+        "port": "465",
+        "host": "smtp.gmail.com",
+        "from": "6@usn.ru",
+        "login": "germanovzce@gmail.com"
+    },
+    "web": {
+        "port": 8085,
+        "root": "public",
+        "host": "localhost",
+        "cache_path": "/tmp/WAB3_cache"
+    },
+    "db": {
+        "password": "admin",
+        "port": 2480,
+        "host": "localhost",
+        "name": "test",
+        "login": "admin"
+    }
+}

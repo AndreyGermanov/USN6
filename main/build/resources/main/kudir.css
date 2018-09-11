@@ -1,0 +1,2329 @@
+table {
+  border-spacing: 0;
+  empty-cells: show
+}
+td, th {
+    vertical-align: top;
+    font-size: 12pt;
+    border-width:1px;
+}
+h1, h2, h3, h4, h5, h6 {
+    clear: both
+}
+ol, ul {
+    margin: 0;
+    padding: 0;
+}
+li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+li span. {
+    clear: both;
+    line-height: 0;
+    width: 0;
+    height: 0;
+    margin: 0;
+    padding: 0;
+}
+span.footnodeNumber {
+    padding-right: 1em;
+}
+span.annotation_style_by_filter {
+    font-size: 95%;
+    font-family: Arial;
+    background-color: #fff000;
+    margin: 0;
+    border: 0;
+    padding: 0;
+}
+* {
+    margin: 0;
+}
+.P1 {
+    font-size: 11pt;
+    margin-left: 0in;
+    margin-right: 0in;
+    text-indent: 0.3937in;
+    font-family: Times New Roman;
+    writing-mode: lr-tb;
+    color: #000000;
+}
+.P10 {
+    font-size: 11pt;
+    font-weight: bold;
+    margin-left: 0.7874in;
+    margin-right: 0.7874in;
+    text-align: left ! important;
+    text-indent: 0in;
+    font-family: Times New Roman;
+    writing-mode: lr-tb;
+}
+
+.P11 {
+    font-size: 10pt;
+    font-weight: bold;
+    margin-left: 0.7874in;
+    margin-right: 0.7874in;
+    text-align: left ! important;
+    text-indent: 0in;
+    font-family: Arial;
+    writing-mode: lr-tb;
+}
+
+.P12 {
+    font-size: 11pt;
+    font-weight: bold;
+    margin-left: 0in;
+    margin-right: -0.0193in;
+    text-align: center ! important;
+    text-indent: 0in;
+    font-family: Times New Roman;
+    writing-mode: lr-tb;
+}
+
+.P13 {
+    font-size: 10pt;
+    font-weight: bold;
+    margin-left: 0in;
+    margin-right: -0.0008in;
+    text-align: center ! important;
+    text-indent: 0in;
+    font-family: Arial;
+    writing-mode: lr-tb;
+}
+
+.P14 {
+    font-size: 11pt;
+    font-weight: bold;
+    margin-left: 0in;
+    margin-right: 0in;
+    text-align: center ! important;
+    text-indent: 0in;
+    font-family: Times New Roman;
+    writing-mode: lr-tb;
+    color: #000000;
+}
+
+.P15 {
+    font-size: 8pt;
+    font-weight: bold;
+    margin-left: 0in;
+    margin-right: 0in;
+    text-align: center ! important;
+    text-indent: 0in;
+    font-family: Times New Roman;
+    writing-mode: lr-tb;
+    color: #000000;
+}
+
+.P16 {
+    font-size: 11pt;
+    font-weight: bold;
+    margin-left: 0in;
+    margin-right: 0in;
+    text-align: center ! important;
+    text-indent: 0in;
+    font-family: Times New Roman;
+    writing-mode: lr-tb;
+}
+
+.P17 {
+    font-size: 10pt;
+    margin-left: 0in;
+    margin-right: 0in;
+    text-align: left ! important;
+    text-indent: 0in;
+    font-family: Times New Roman;
+    writing-mode: lr-tb;
+}
+
+.P18 {
+    font-size: 10pt;
+    margin-left: 0in;
+    margin-right: 0in;
+    text-align: center ! important;
+    text-indent: 0in;
+    font-family: Times New Roman;
+    writing-mode: lr-tb;
+}
+
+.P19 {
+    font-size: 10pt;
+    margin-left: 0in;
+    margin-right: 0in;
+    text-align: center ! important;
+    text-indent: 0in;
+    font-family: Times New Roman;
+    writing-mode: lr-tb;
+}
+
+.P2 {
+    font-size: 11pt;
+    margin-left: 0in;
+    margin-right: 0in;
+    text-indent: 0.3937in;
+    font-family: Times New Roman;
+    writing-mode: lr-tb;
+}
+
+.P20 {
+    font-size: 10pt;
+    margin-left: 0in;
+    margin-right: 0in;
+    text-align: right ! important;
+    text-indent: 0in;
+    font-family: Times New Roman;
+    writing-mode: lr-tb;
+}
+
+.P21 {
+    font-size: 9pt;
+    margin-left: 0in;
+    margin-right: 0in;
+    text-align: left ! important;
+    text-indent: 0in;
+    font-family: Times New Roman;
+    writing-mode: lr-tb;
+}
+
+.P22 {
+    font-size: 9pt;
+    margin-left: 0in;
+    margin-right: 0in;
+    text-align: center ! important;
+    text-indent: 0in;
+    font-family: Times New Roman;
+    writing-mode: lr-tb;
+}
+
+.P23 {
+    font-size: 9pt;
+    margin-left: 0in;
+    margin-right: 0in;
+    text-align: center ! important;
+    text-indent: 0in;
+    font-family: Times New Roman;
+    writing-mode: lr-tb;
+}
+
+.P24 {
+    font-size: 9pt;
+    margin-left: 0in;
+    margin-right: 0in;
+    text-align: left ! important;
+    text-indent: 0in;
+    font-family: Times New Roman;
+    writing-mode: lr-tb;
+}
+
+.P25 {
+    font-size: 9pt;
+    margin-left: 0in;
+    margin-right: 0in;
+    text-align: center ! important;
+    text-indent: 0in;
+    font-family: Times New Roman;
+    writing-mode: lr-tb;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.P26 {
+    font-size: 11pt;
+    margin-left: 0in;
+    margin-right: 0in;
+    text-align: left ! important;
+    text-indent: 0in;
+    font-family: Times New Roman;
+    writing-mode: lr-tb;
+}
+
+.P27 {
+    font-size: 11pt;
+    margin-left: 0in;
+    margin-right: 0in;
+    text-align: left ! important;
+    text-indent: 0in;
+    font-family: Times New Roman;
+    writing-mode: lr-tb;
+    font-weight: bold;
+}
+
+.P28 {
+    font-size: 11pt;
+    margin-left: 0in;
+    margin-right: 0in;
+    text-align: right ! important;
+    text-indent: 0in;
+    font-family: Times New Roman;
+    writing-mode: lr-tb;
+    font-weight: bold;
+}
+
+.P29 {
+    font-size: 11pt;
+    margin-left: 0in;
+    margin-right: 0in;
+    text-align: center ! important;
+    text-indent: 0in;
+    font-family: Times New Roman;
+    writing-mode: lr-tb;
+    font-weight: bold;
+}
+
+.P3 {
+    font-size: 1pt;
+    margin-left: 0in;
+    margin-right: 0in;
+    text-indent: 0.3937in;
+    font-family: Arial;
+    writing-mode: lr-tb;
+}
+
+.P30 {
+    font-size: 11pt;
+    margin-left: 0in;
+    margin-right: 0in;
+    text-align: center ! important;
+    text-indent: 0in;
+    font-family: Times New Roman;
+    writing-mode: lr-tb;
+    font-weight: bold;
+}
+
+.P31 {
+    font-size: 11pt;
+    margin-left: 0in;
+    margin-right: 0in;
+    text-align: center ! important;
+    text-indent: 0in;
+    font-family: Times New Roman;
+    writing-mode: lr-tb;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.P32 {
+    font-size: 8pt;
+    margin-left: 0in;
+    margin-right: 0in;
+    text-align: center ! important;
+    text-indent: 0in;
+    font-family: Times New Roman;
+    writing-mode: lr-tb;
+}
+
+.P33 {
+    font-size: 3pt;
+    margin-left: 0in;
+    margin-right: 0in;
+    text-align: left ! important;
+    text-indent: 0in;
+    font-family: Times New Roman;
+    writing-mode: lr-tb;
+}
+
+.P35 {
+    font-size: 10pt;
+    margin-left: 0in;
+    margin-right: 0in;
+    text-align: left ! important;
+    text-indent: 0in;
+    font-family: Times New Roman;
+    writing-mode: lr-tb;
+    color: #000000;
+}
+
+.P36 {
+    font-size: 8pt;
+    margin-left: 0in;
+    margin-right: 0in;
+    text-align: center ! important;
+    text-indent: 0in;
+    font-family: Times New Roman;
+    writing-mode: lr-tb;
+    margin-top: 0.0835in;
+    margin-bottom: 0in;
+}
+
+.P37 {
+    font-size: 8pt;
+    margin-left: 0in;
+    margin-right: 0in;
+    text-align: center ! important;
+    text-indent: 0in;
+    font-family: Times New Roman;
+    writing-mode: lr-tb;
+    margin-top: 0.0835in;
+    margin-bottom: 0in;
+}
+
+.P38 {
+    font-size: 10pt;
+    margin-left: 0in;
+    margin-right: 0in;
+    text-align: left ! important;
+    text-indent: 0in;
+    font-family: Times New Roman;
+    writing-mode: lr-tb;
+}
+
+.P39 {
+    font-size: 1pt;
+    margin-left: 0in;
+    margin-right: 0in;
+    text-indent: 0.3937in;
+    font-family: Arial;
+    writing-mode: lr-tb;
+}
+
+.P4 {
+    font-size: 11pt;
+    margin-left: 0in;
+    margin-right: 0in;
+    text-indent: 0in;
+    font-family: Times New Roman;
+    writing-mode: lr-tb;
+    line-height: 0.1902in;
+    text-align: center ! important;
+    color: #000000;
+    letter-spacing: -0.0008in;
+    font-weight: bold;
+}
+
+.P40 {
+    font-size: 10pt;
+    margin-left: 0in;
+    margin-right: 0in;
+    text-indent: 0.3937in;
+    font-family: Arial;
+    writing-mode: lr-tb;
+}
+
+.P41 {
+    font-size: 8pt;
+    font-family: Times New Roman;
+    writing-mode: page;
+    text-align: right ! important;
+    color: #000000;
+}
+
+.P42 {
+    font-size: 8pt;
+    font-family: Times New Roman;
+    writing-mode: page;
+    text-align: right ! important;
+    color: #000000;
+}
+
+.P5 {
+    font-size: 1pt;
+    margin-left: 0in;
+    margin-right: 0in;
+    text-indent: 0.3937in;
+    font-family: Arial;
+    writing-mode: lr-tb;
+}
+
+.P6 {
+    font-size: 11pt;
+    margin-left: 0in;
+    margin-right: -0.0193in;
+    text-indent: 0in;
+    font-family: Times New Roman;
+    writing-mode: lr-tb;
+    text-align: center ! important;
+    font-weight: bold;
+}
+
+.P7 {
+    font-size: 10pt;
+    margin-left: 0in;
+    margin-right: 0in;
+    text-indent: 0.3937in;
+    font-family: Arial;
+    writing-mode: lr-tb;
+}
+
+.P8 {
+    font-size: 10pt;
+    margin-left: 0in;
+    margin-right: 0in;
+    text-indent: 0.3937in;
+    font-family: Arial;
+    writing-mode: lr-tb;
+}
+
+.P9 {
+    font-size: 11pt;
+    font-weight: bold;
+    margin-left: 0.7874in;
+    margin-right: 0.7874in;
+    text-align: center ! important;
+    text-indent: 0in;
+    font-family: Times New Roman;
+    writing-mode: lr-tb;
+}
+
+.Standard {
+    font-size: 10pt;
+    font-family: Arial;
+    writing-mode: lr-tb;
+    margin-left: 0in;
+    margin-right: 0in;
+    text-indent: 0.3937in;
+}
+
+.таблица {
+    font-size: 10pt;
+    margin-left: 0in;
+    margin-right: 0in;
+    text-indent: 0in;
+    font-family: Times New Roman;
+    writing-mode: lr-tb;
+    text-align: left ! important;
+}
+
+.Таблица1 {
+    width: 6.5278in;
+    margin-left: -0.0299in;
+    margin-right: auto;
+    writing-mode: lr-tb;
+}
+
+.Таблица10 {
+    width: 10.4451in;
+    margin-left: 0px;
+    margin-right: auto;
+    writing-mode: lr-tb;
+}
+
+.Таблица11 {
+    width: 4.1542in;
+    margin-left: auto;
+    margin-right: auto;
+    writing-mode: lr-tb;
+}
+
+.Таблица12 {
+    width: 6.5271in;
+    margin-left: -0.0236in;
+    margin-right: auto;
+    writing-mode: lr-tb;
+}
+
+.Таблица2 {
+    width: 6.5375in;
+    margin-left: -0.0299in;
+    margin-right: auto;
+    writing-mode: lr-tb;
+}
+
+.Таблица3 {
+    width: 6.5375in;
+    margin-left: -0.0299in;
+    margin-right: auto;
+    writing-mode: lr-tb;
+}
+
+.Таблица4 {
+    width: 6.5375in;
+    margin-left: -0.0299in;
+    margin-right: auto;
+    writing-mode: lr-tb;
+}
+
+.Таблица5 {
+    width: 6.5375in;
+    margin-left: -0.0299in;
+    margin-right: auto;
+    writing-mode: lr-tb;
+}
+
+.Таблица6 {
+    width: 6.5167in;
+    margin-left: -0.0194in;
+    margin-right: auto;
+    writing-mode: lr-tb;
+}
+
+.Таблица7 {
+    width: 10.4646in;
+    margin-left: auto;
+    margin-right: auto;
+    writing-mode: lr-tb;
+}
+
+.Таблица8 {
+    width: 6.5278in;
+    margin-left: -0.0236in;
+    margin-right: auto;
+    writing-mode: lr-tb;
+}
+
+.Таблица9 {
+    width: 10.3319in;
+    margin-left: auto;
+    margin-right: auto;
+    writing-mode: lr-tb;
+}
+
+.Таблица1_A1 {
+    vertical-align: bottom;
+    padding-left: 0.0194in;
+    padding-right: 0.0194in;
+    padding-top: 0in;
+    padding-bottom: 0in;
+    border-style: none;
+    writing-mode: lr-tb;
+}
+
+.Таблица1_A11 {
+    vertical-align: bottom;
+    padding-left: 0.0194in;
+    padding-right: 0.0194in;
+    padding-top: 0in;
+    padding-bottom: 0in;
+    border-left-width: 0, 0176cm;
+    border-left-style: solid;
+    border-left-color: #000000;
+    border-right-style: none;
+    border-top-width: 0, 0176cm;
+    border-top-style: solid;
+    border-top-color: #000000;
+    border-bottom-width: 0, 0176cm;
+    border-bottom-style: solid;
+    border-bottom-color: #000000;
+    writing-mode: lr-tb;
+}
+
+.Таблица1_G4 {
+    vertical-align: bottom;
+    padding-left: 0.0194in;
+    padding-right: 0.0194in;
+    padding-top: 0in;
+    padding-bottom: 0in;
+    border-left-style: none;
+    border-right-style: none;
+    border-top-style: none;
+    border-bottom-width: 0, 0176cm;
+    border-bottom-style: solid;
+    border-bottom-color: #000000;
+    writing-mode: lr-tb;
+}
+
+.Таблица1_L17 {
+    vertical-align: top;
+    padding-left: 0.0194in;
+    padding-right: 0.0194in;
+    padding-top: 0in;
+    padding-bottom: 0in;
+    border-style: none;
+    writing-mode: lr-tb;
+}
+
+.Таблица1_a27 {
+    vertical-align: top;
+    padding-left: 0.0194in;
+    padding-right: 0.0194in;
+    padding-top: 0in;
+    padding-bottom: 0in;
+    border-left-style: none;
+    border-right-style: none;
+    border-top-width: 0, 0176cm;
+    border-top-style: solid;
+    border-top-color: #000000;
+    border-bottom-style: none;
+    writing-mode: lr-tb;
+}
+
+.Таблица1_e11 {
+    vertical-align: bottom;
+    padding-left: 0.0194in;
+    padding-right: 0.0194in;
+    padding-top: 0in;
+    padding-bottom: 0in;
+    border-left-width: 0, 0176cm;
+    border-left-style: solid;
+    border-left-color: #000000;
+    border-right-style: none;
+    border-top-style: none;
+    border-bottom-style: none;
+    writing-mode: lr-tb;
+}
+
+.Таблица1_j1 {
+    vertical-align: bottom;
+    padding-left: 0.0194in;
+    padding-right: 0.0194in;
+    padding-top: 0in;
+    padding-bottom: 0in;
+    border-width: 0, 0088cm;
+    border-style: solid;
+    border-color: #000000;
+    writing-mode: lr-tb;
+}
+
+.Таблица1_j2 {
+    vertical-align: bottom;
+    padding-left: 0.0194in;
+    padding-right: 0.0194in;
+    padding-top: 0in;
+    padding-bottom: 0in;
+    border-left-width: 0, 0088cm;
+    border-left-style: solid;
+    border-left-color: #000000;
+    border-right-width: 0, 0088cm;
+    border-right-style: solid;
+    border-right-color: #000000;
+    border-top-width: 0, 0088cm;
+    border-top-style: none;
+    border-top-color: #000000;
+    border-bottom-style: none;
+    writing-mode: lr-tb;
+}
+
+.Таблица1_j20 {
+    vertical-align: bottom;
+    padding-left: 0.0194in;
+    padding-right: 0.0194in;
+    padding-top: 0in;
+    padding-bottom: 0in;
+    border-left-width: 0, 0088cm;
+    border-left-style: solid;
+    border-left-color: #000000;
+    border-right-width: 0, 0088cm;
+    border-right-style: solid;
+    border-right-color: #000000;
+    border-top-style: none;
+    border-bottom-width: 0, 0088cm;
+    border-bottom-style: solid;
+    border-bottom-color: #000000;
+    writing-mode: lr-tb;
+}
+
+.Таблица1_j3 {
+    vertical-align: bottom;
+    padding-left: 0.0194in;
+    padding-right: 0.0194in;
+    padding-top: 0in;
+    padding-bottom: 0in;
+    border-left-width: 0, 0088cm;
+    border-left-style: solid;
+    border-left-color: #000000;
+    border-right-style: none;
+    border-top-width: 0, 0088cm;
+    border-top-style: solid;
+    border-top-color: #000000;
+    border-bottom-width: 0, 0088cm;
+    border-bottom-style: solid;
+    border-bottom-color: #000000;
+    writing-mode: lr-tb;
+}
+
+.Таблица1_j4 {
+    vertical-align: bottom;
+    padding-left: 0.0194in;
+    padding-right: 0.0194in;
+    padding-top: 0in;
+    padding-bottom: 0in;
+    border-left-width: 0, 0088cm;
+    border-left-style: solid;
+    border-left-color: #000000;
+    border-right-width: 0, 0088cm;
+    border-right-style: solid;
+    border-right-color: #000000;
+    border-top-style: none;
+    border-bottom-style: none;
+    writing-mode: lr-tb;
+}
+
+.Таблица10_A1 {
+    vertical-align: top;
+    padding-left: 0.0729in;
+    padding-right: 0.0729in;
+    padding-top: 0in;
+    padding-bottom: 0in;
+    border-left-width: 0, 0088cm;
+    border-left-style: solid;
+    border-left-color: #000000;
+    border-right-style: none;
+    border-top-width: 0, 0088cm;
+    border-top-style: solid;
+    border-top-color: #000000;
+    border-bottom-style: none;
+    writing-mode: lr-tb;
+}
+
+.Таблица10_D1 {
+    vertical-align: top;
+    padding-left: 0.0729in;
+    padding-right: 0.0729in;
+    padding-top: 0in;
+    padding-bottom: 0in;
+    border-left-width: 0, 0088cm;
+    border-left-style: solid;
+    border-left-color: #000000;
+    border-right-style: none;
+    border-top-width: 0, 0088cm;
+    border-top-style: solid;
+    border-top-color: #000000;
+    border-bottom-width: 0, 0088cm;
+    border-bottom-style: solid;
+    border-bottom-color: #000000;
+    writing-mode: lr-tb;
+}
+
+.Таблица10_J1 {
+    vertical-align: top;
+    padding-left: 0.0729in;
+    padding-right: 0.0729in;
+    padding-top: 0in;
+    padding-bottom: 0in;
+    border-left-width: 0, 0088cm;
+    border-left-style: solid;
+    border-left-color: #000000;
+    border-right-width: 0, 0088cm;
+    border-right-style: solid;
+    border-right-color: #000000;
+    border-top-width: 0, 0088cm;
+    border-top-style: solid;
+    border-top-color: #000000;
+    border-bottom-style: none;
+    writing-mode: lr-tb;
+}
+
+.Таблица10_J3 {
+    vertical-align: top;
+    padding-left: 0.0729in;
+    padding-right: 0.0729in;
+    padding-top: 0in;
+    padding-bottom: 0in;
+    border-width: 0, 0088cm;
+    border-style: solid;
+    border-color: #000000;
+    writing-mode: lr-tb;
+}
+
+.Таблица11_A1 {
+    vertical-align: top;
+    padding-left: 0.0194in;
+    padding-right: 0.0194in;
+    padding-top: 0in;
+    padding-bottom: 0in;
+    border-style: none;
+    writing-mode: lr-tb;
+}
+
+.Таблица11_B1 {
+    vertical-align: top;
+    padding-left: 0.0194in;
+    padding-right: 0.0194in;
+    padding-top: 0in;
+    padding-bottom: 0in;
+    border-left-style: none;
+    border-right-style: none;
+    border-top-style: none;
+    border-bottom-width: 0, 0176cm;
+    border-bottom-style: solid;
+    border-bottom-color: #000000;
+    writing-mode: lr-tb;
+}
+
+.Таблица12_A1 {
+    vertical-align: middle;
+    padding-left: 0.0194in;
+    padding-right: 0.0194in;
+    padding-top: 0in;
+    padding-bottom: 0in;
+    border-left-width: 0, 0088cm;
+    border-left-style: solid;
+    border-left-color: #000000;
+    border-right-style: none;
+    border-top-width: 0, 0088cm;
+    border-top-style: solid;
+    border-top-color: #000000;
+    border-bottom-width: 0, 0088cm;
+    border-bottom-style: solid;
+    border-bottom-color: #000000;
+    writing-mode: lr-tb;
+}
+
+.Таблица12_B6 {
+    vertical-align: middle;
+    padding-left: 0.0194in;
+    padding-right: 0.0194in;
+    padding-top: 0in;
+    padding-bottom: 0in;
+    border-left-style: none;
+    border-right-style: none;
+    border-top-width: 0, 0088cm;
+    border-top-style: solid;
+    border-top-color: #000000;
+    border-bottom-width: 0, 0088cm;
+    border-bottom-style: solid;
+    border-bottom-color: #000000;
+    writing-mode: lr-tb;
+}
+
+.Таблица12_D1 {
+    vertical-align: middle;
+    padding-left: 0.0194in;
+    padding-right: 0.0194in;
+    padding-top: 0in;
+    padding-bottom: 0in;
+    border-width: 0, 0088cm;
+    border-style: solid;
+    border-color: #000000;
+    writing-mode: lr-tb;
+}
+
+.Таблица12_D6 {
+    vertical-align: middle;
+    padding-left: 0.0194in;
+    padding-right: 0.0194in;
+    padding-top: 0in;
+    padding-bottom: 0in;
+    border-left-style: none;
+    border-right-width: 0, 0088cm;
+    border-right-style: solid;
+    border-right-color: #000000;
+    border-top-width: 0, 0088cm;
+    border-top-style: solid;
+    border-top-color: #000000;
+    border-bottom-width: 0, 0088cm;
+    border-bottom-style: solid;
+    border-bottom-color: #000000;
+    writing-mode: lr-tb;
+}
+
+.Таблица2_A1 {
+    vertical-align: top;
+    padding-left: 0.0194in;
+    padding-right: 0.0194in;
+    padding-top: 0in;
+    padding-bottom: 0in;
+    border-style: none;
+    writing-mode: lr-tb;
+}
+
+.Таблица2_A2 {
+    vertical-align: top;
+    padding-left: 0.0194in;
+    padding-right: 0.0194in;
+    padding-top: 0in;
+    padding-bottom: 0in;
+    border-left-width: 0, 0176cm;
+    border-left-style: solid;
+    border-left-color: #000000;
+    border-right-style: none;
+    border-top-width: 0, 0176cm;
+    border-top-style: solid;
+    border-top-color: #000000;
+    border-bottom-width: 0, 0176cm;
+    border-bottom-style: solid;
+    border-bottom-color: #000000;
+    writing-mode: lr-tb;
+}
+
+.Таблица2_A3 {
+    vertical-align: top;
+    padding-left: 0.0194in;
+    padding-right: 0.0194in;
+    padding-top: 0in;
+    padding-bottom: 0in;
+    border-left-width: 0, 0088cm;
+    border-left-style: solid;
+    border-left-color: #000000;
+    border-right-style: none;
+    border-top-style: none;
+    border-bottom-width: 0, 0088cm;
+    border-bottom-style: solid;
+    border-bottom-color: #000000;
+    writing-mode: lr-tb;
+}
+
+.Таблица2_A4 {
+    vertical-align: top;
+    padding-left: 0.0194in;
+    padding-right: 0.0194in;
+    padding-top: 0in;
+    padding-bottom: 0in;
+    border-left-width: 0, 0088cm;
+    border-left-style: solid;
+    border-left-color: #000000;
+    border-right-style: none;
+    border-top-width: 0, 0088cm;
+    border-top-style: solid;
+    border-top-color: #000000;
+    border-bottom-width: 0, 0088cm;
+    border-bottom-style: solid;
+    border-bottom-color: #000000;
+    writing-mode: lr-tb;
+}
+
+.Таблица2_D2 {
+    vertical-align: top;
+    padding-left: 0.0194in;
+    padding-right: 0.0194in;
+    padding-top: 0in;
+    padding-bottom: 0in;
+    border-width: 0, 0176cm;
+    border-style: solid;
+    border-color: #000000;
+    writing-mode: lr-tb;
+}
+
+.Таблица2_D3 {
+    vertical-align: top;
+    padding-left: 0.0194in;
+    padding-right: 0.0194in;
+    padding-top: 0in;
+    padding-bottom: 0in;
+    border-left-width: 0, 0176cm;
+    border-left-style: solid;
+    border-left-color: #000000;
+    border-right-style: none;
+    border-top-style: none;
+    border-bottom-width: 0, 0176cm;
+    border-bottom-style: solid;
+    border-bottom-color: #000000;
+    writing-mode: lr-tb;
+}
+
+.Таблица2_E3 {
+    vertical-align: top;
+    padding-left: 0.0194in;
+    padding-right: 0.0194in;
+    padding-top: 0in;
+    padding-bottom: 0in;
+    border-left-width: 0, 0176cm;
+    border-left-style: solid;
+    border-left-color: #000000;
+    border-right-width: 0, 0176cm;
+    border-right-style: solid;
+    border-right-color: #000000;
+    border-top-style: none;
+    border-bottom-width: 0, 0176cm;
+    border-bottom-style: solid;
+    border-bottom-color: #000000;
+    writing-mode: lr-tb;
+}
+
+.Таблица3_A1 {
+    vertical-align: top;
+    padding-left: 0.0194in;
+    padding-right: 0.0194in;
+    padding-top: 0in;
+    padding-bottom: 0in;
+    border-style: none;
+    writing-mode: lr-tb;
+}
+
+.Таблица3_A2 {
+    vertical-align: top;
+    padding-left: 0.0194in;
+    padding-right: 0.0194in;
+    padding-top: 0in;
+    padding-bottom: 0in;
+    border-left-width: 0, 0176cm;
+    border-left-style: solid;
+    border-left-color: #000000;
+    border-right-style: none;
+    border-top-width: 0, 0176cm;
+    border-top-style: solid;
+    border-top-color: #000000;
+    border-bottom-width: 0, 0176cm;
+    border-bottom-style: solid;
+    border-bottom-color: #000000;
+    writing-mode: lr-tb;
+}
+
+.Таблица3_A3 {
+    vertical-align: top;
+    padding-left: 0.0194in;
+    padding-right: 0.0194in;
+    padding-top: 0in;
+    padding-bottom: 0in;
+    border-left-width: 0, 0088cm;
+    border-left-style: solid;
+    border-left-color: #000000;
+    border-right-style: none;
+    border-top-style: none;
+    border-bottom-width: 0, 0088cm;
+    border-bottom-style: solid;
+    border-bottom-color: #000000;
+    writing-mode: lr-tb;
+}
+
+.Таблица3_A4 {
+    vertical-align: top;
+    padding-left: 0.0194in;
+    padding-right: 0.0194in;
+    padding-top: 0in;
+    padding-bottom: 0in;
+    border-left-width: 0, 0088cm;
+    border-left-style: solid;
+    border-left-color: #000000;
+    border-right-style: none;
+    border-top-width: 0, 0088cm;
+    border-top-style: solid;
+    border-top-color: #000000;
+    border-bottom-width: 0, 0088cm;
+    border-bottom-style: solid;
+    border-bottom-color: #000000;
+    writing-mode: lr-tb;
+}
+
+.Таблица3_A5 {
+    vertical-align: top;
+    padding-left: 0.0194in;
+    padding-right: 0.0194in;
+    padding-top: 0in;
+    padding-bottom: 0in;
+    border-left-width: 0, 0088cm;
+    border-left-style: solid;
+    border-left-color: #000000;
+    border-right-style: none;
+    border-top-width: 0, 0088cm;
+    border-top-style: solid;
+    border-top-color: #000000;
+    border-bottom-style: none;
+    writing-mode: lr-tb;
+}
+
+.Таблица3_A8 {
+    vertical-align: top;
+    padding-left: 0.0194in;
+    padding-right: 0.0194in;
+    padding-top: 0in;
+    padding-bottom: 0in;
+    border-left-width: 0, 0088cm;
+    border-left-style: solid;
+    border-left-color: #000000;
+    border-right-style: none;
+    border-top-style: none;
+    border-bottom-style: none;
+    writing-mode: lr-tb;
+}
+
+.Таблица3_D2 {
+    vertical-align: top;
+    padding-left: 0.0194in;
+    padding-right: 0.0194in;
+    padding-top: 0in;
+    padding-bottom: 0in;
+    border-width: 0, 0176cm;
+    border-style: solid;
+    border-color: #000000;
+    writing-mode: lr-tb;
+}
+
+.Таблица3_D3 {
+    vertical-align: top;
+    padding-left: 0.0194in;
+    padding-right: 0.0194in;
+    padding-top: 0in;
+    padding-bottom: 0in;
+    border-left-width: 0, 0176cm;
+    border-left-style: solid;
+    border-left-color: #000000;
+    border-right-style: none;
+    border-top-style: none;
+    border-bottom-width: 0, 0176cm;
+    border-bottom-style: solid;
+    border-bottom-color: #000000;
+    writing-mode: lr-tb;
+}
+
+.Таблица3_E29 {
+    vertical-align: top;
+    padding-left: 0.0194in;
+    padding-right: 0.0194in;
+    padding-top: 0in;
+    padding-bottom: 0in;
+    border-left-width: 0, 0176cm;
+    border-left-style: solid;
+    border-left-color: #000000;
+    border-right-width: 0, 0088cm;
+    border-right-style: solid;
+    border-right-color: #000000;
+    border-top-width: 0, 0176cm;
+    border-top-style: solid;
+    border-top-color: #000000;
+    border-bottom-width: 0, 0088cm;
+    border-bottom-style: solid;
+    border-bottom-color: #000000;
+    writing-mode: lr-tb;
+}
+
+.Таблица3_E3 {
+    vertical-align: top;
+    padding-left: 0.0194in;
+    padding-right: 0.0194in;
+    padding-top: 0in;
+    padding-bottom: 0in;
+    border-left-width: 0, 0176cm;
+    border-left-style: solid;
+    border-left-color: #000000;
+    border-right-width: 0, 0176cm;
+    border-right-style: solid;
+    border-right-color: #000000;
+    border-top-style: none;
+    border-bottom-width: 0, 0176cm;
+    border-bottom-style: solid;
+    border-bottom-color: #000000;
+    writing-mode: lr-tb;
+}
+
+.Таблица3_E4 {
+    vertical-align: top;
+    padding-left: 0.0194in;
+    padding-right: 0.0194in;
+    padding-top: 0in;
+    padding-bottom: 0in;
+    border-left-width: 0, 0176cm;
+    border-left-style: solid;
+    border-left-color: #000000;
+    border-right-width: 0, 0088cm;
+    border-right-style: solid;
+    border-right-color: #000000;
+    border-top-width: 0, 0176cm;
+    border-top-style: solid;
+    border-top-color: #000000;
+    border-bottom-width: 0, 0176cm;
+    border-bottom-style: solid;
+    border-bottom-color: #000000;
+    writing-mode: lr-tb;
+}
+
+.Таблица3_E8 {
+    vertical-align: top;
+    padding-left: 0.0194in;
+    padding-right: 0.0194in;
+    padding-top: 0in;
+    padding-bottom: 0in;
+    border-left-width: 0, 0176cm;
+    border-left-style: solid;
+    border-left-color: #000000;
+    border-right-width: 0, 0088cm;
+    border-right-style: solid;
+    border-right-color: #000000;
+    border-top-style: none;
+    border-bottom-width: 0, 0176cm;
+    border-bottom-style: solid;
+    border-bottom-color: #000000;
+    writing-mode: lr-tb;
+}
+
+.Таблица4_A1 {
+    vertical-align: top;
+    padding-left: 0.0194in;
+    padding-right: 0.0194in;
+    padding-top: 0in;
+    padding-bottom: 0in;
+    border-style: none;
+    writing-mode: lr-tb;
+}
+
+.Таблица4_A2 {
+    vertical-align: top;
+    padding-left: 0.0194in;
+    padding-right: 0.0194in;
+    padding-top: 0in;
+    padding-bottom: 0in;
+    border-left-width: 0, 0176cm;
+    border-left-style: solid;
+    border-left-color: #000000;
+    border-right-style: none;
+    border-top-width: 0, 0176cm;
+    border-top-style: solid;
+    border-top-color: #000000;
+    border-bottom-width: 0, 0176cm;
+    border-bottom-style: solid;
+    border-bottom-color: #000000;
+    writing-mode: lr-tb;
+}
+
+.Таблица4_A3 {
+    vertical-align: top;
+    padding-left: 0.0194in;
+    padding-right: 0.0194in;
+    padding-top: 0in;
+    padding-bottom: 0in;
+    border-left-width: 0, 0088cm;
+    border-left-style: solid;
+    border-left-color: #000000;
+    border-right-style: none;
+    border-top-style: none;
+    border-bottom-width: 0, 0088cm;
+    border-bottom-style: solid;
+    border-bottom-color: #000000;
+    writing-mode: lr-tb;
+}
+
+.Таблица4_A4 {
+    vertical-align: top;
+    padding-left: 0.0194in;
+    padding-right: 0.0194in;
+    padding-top: 0in;
+    padding-bottom: 0in;
+    border-left-width: 0, 0088cm;
+    border-left-style: solid;
+    border-left-color: #000000;
+    border-right-style: none;
+    border-top-width: 0, 0088cm;
+    border-top-style: solid;
+    border-top-color: #000000;
+    border-bottom-width: 0, 0088cm;
+    border-bottom-style: solid;
+    border-bottom-color: #000000;
+    writing-mode: lr-tb;
+}
+
+.Таблица4_A5 {
+    vertical-align: top;
+    padding-left: 0.0194in;
+    padding-right: 0.0194in;
+    padding-top: 0in;
+    padding-bottom: 0in;
+    border-left-width: 0, 0088cm;
+    border-left-style: solid;
+    border-left-color: #000000;
+    border-right-style: none;
+    border-top-width: 0, 0088cm;
+    border-top-style: solid;
+    border-top-color: #000000;
+    border-bottom-style: none;
+    writing-mode: lr-tb;
+}
+
+.Таблица4_D2 {
+    vertical-align: top;
+    padding-left: 0.0194in;
+    padding-right: 0.0194in;
+    padding-top: 0in;
+    padding-bottom: 0in;
+    border-width: 0, 0176cm;
+    border-style: solid;
+    border-color: #000000;
+    writing-mode: lr-tb;
+}
+
+.Таблица4_D3 {
+    vertical-align: top;
+    padding-left: 0.0194in;
+    padding-right: 0.0194in;
+    padding-top: 0in;
+    padding-bottom: 0in;
+    border-left-width: 0, 0176cm;
+    border-left-style: solid;
+    border-left-color: #000000;
+    border-right-style: none;
+    border-top-style: none;
+    border-bottom-style: none;
+    writing-mode: lr-tb;
+}
+
+.Таблица4_E21 {
+    vertical-align: top;
+    padding-left: 0.0194in;
+    padding-right: 0.0194in;
+    padding-top: 0in;
+    padding-bottom: 0in;
+    border-left-width: 0, 0176cm;
+    border-left-style: solid;
+    border-left-color: #000000;
+    border-right-width: 0, 0088cm;
+    border-right-style: solid;
+    border-right-color: #000000;
+    border-top-width: 0, 0176cm;
+    border-top-style: solid;
+    border-top-color: #000000;
+    border-bottom-width: 0, 0088cm;
+    border-bottom-style: solid;
+    border-bottom-color: #000000;
+    writing-mode: lr-tb;
+}
+
+.Таблица4_E3 {
+    vertical-align: top;
+    padding-left: 0.0194in;
+    padding-right: 0.0194in;
+    padding-top: 0in;
+    padding-bottom: 0in;
+    border-left-width: 0, 0176cm;
+    border-left-style: solid;
+    border-left-color: #000000;
+    border-right-width: 0, 0176cm;
+    border-right-style: solid;
+    border-right-color: #000000;
+    border-top-style: none;
+    border-bottom-style: none;
+    writing-mode: lr-tb;
+}
+
+.Таблица4_E4 {
+    vertical-align: top;
+    padding-left: 0.0194in;
+    padding-right: 0.0194in;
+    padding-top: 0in;
+    padding-bottom: 0in;
+    border-left-width: 0, 0176cm;
+    border-left-style: solid;
+    border-left-color: #000000;
+    border-right-width: 0, 0088cm;
+    border-right-style: solid;
+    border-right-color: #000000;
+    border-top-width: 0, 0176cm;
+    border-top-style: solid;
+    border-top-color: #000000;
+    border-bottom-width: 0, 0176cm;
+    border-bottom-style: solid;
+    border-bottom-color: #000000;
+    writing-mode: lr-tb;
+}
+
+.Таблица5_A1 {
+    vertical-align: top;
+    padding-left: 0.0194in;
+    padding-right: 0.0194in;
+    padding-top: 0in;
+    padding-bottom: 0in;
+    border-style: none;
+    writing-mode: lr-tb;
+}
+
+.Таблица5_A2 {
+    vertical-align: top;
+    padding-left: 0.0194in;
+    padding-right: 0.0194in;
+    padding-top: 0in;
+    padding-bottom: 0in;
+    border-left-width: 0, 0176cm;
+    border-left-style: solid;
+    border-left-color: #000000;
+    border-right-style: none;
+    border-top-width: 0, 0176cm;
+    border-top-style: solid;
+    border-top-color: #000000;
+    border-bottom-width: 0, 0176cm;
+    border-bottom-style: solid;
+    border-bottom-color: #000000;
+    writing-mode: lr-tb;
+}
+
+.Таблица5_A3 {
+    vertical-align: top;
+    padding-left: 0.0194in;
+    padding-right: 0.0194in;
+    padding-top: 0in;
+    padding-bottom: 0in;
+    border-left-width: 0, 0088cm;
+    border-left-style: solid;
+    border-left-color: #000000;
+    border-right-style: none;
+    border-top-style: none;
+    border-bottom-width: 0, 0088cm;
+    border-bottom-style: solid;
+    border-bottom-color: #000000;
+    writing-mode: lr-tb;
+}
+
+.Таблица5_A4 {
+    vertical-align: top;
+    padding-left: 0.0194in;
+    padding-right: 0.0194in;
+    padding-top: 0in;
+    padding-bottom: 0in;
+    border-left-width: 0, 0088cm;
+    border-left-style: solid;
+    border-left-color: #000000;
+    border-right-style: none;
+    border-top-width: 0, 0088cm;
+    border-top-style: solid;
+    border-top-color: #000000;
+    border-bottom-width: 0, 0088cm;
+    border-bottom-style: solid;
+    border-bottom-color: #000000;
+    writing-mode: lr-tb;
+}
+
+.Таблица5_A5 {
+    vertical-align: top;
+    padding-left: 0.0194in;
+    padding-right: 0.0194in;
+    padding-top: 0in;
+    padding-bottom: 0in;
+    border-left-width: 0, 0088cm;
+    border-left-style: solid;
+    border-left-color: #000000;
+    border-right-style: none;
+    border-top-width: 0, 0088cm;
+    border-top-style: solid;
+    border-top-color: #000000;
+    border-bottom-style: none;
+    writing-mode: lr-tb;
+}
+
+.Таблица5_D2 {
+    vertical-align: top;
+    padding-left: 0.0194in;
+    padding-right: 0.0194in;
+    padding-top: 0in;
+    padding-bottom: 0in;
+    border-width: 0, 0176cm;
+    border-style: solid;
+    border-color: #000000;
+    writing-mode: lr-tb;
+}
+
+.Таблица5_D3 {
+    vertical-align: top;
+    padding-left: 0.0194in;
+    padding-right: 0.0194in;
+    padding-top: 0in;
+    padding-bottom: 0in;
+    border-left-width: 0, 0176cm;
+    border-left-style: solid;
+    border-left-color: #000000;
+    border-right-style: none;
+    border-top-style: none;
+    border-bottom-width: 0, 0176cm;
+    border-bottom-style: solid;
+    border-bottom-color: #000000;
+    writing-mode: lr-tb;
+}
+
+.Таблица5_E20 {
+    vertical-align: top;
+    padding-left: 0.0194in;
+    padding-right: 0.0194in;
+    padding-top: 0in;
+    padding-bottom: 0in;
+    border-left-width: 0, 0176cm;
+    border-left-style: solid;
+    border-left-color: #000000;
+    border-right-width: 0, 0088cm;
+    border-right-style: solid;
+    border-right-color: #000000;
+    border-top-width: 0, 0176cm;
+    border-top-style: solid;
+    border-top-color: #000000;
+    border-bottom-width: 0, 0088cm;
+    border-bottom-style: solid;
+    border-bottom-color: #000000;
+    writing-mode: lr-tb;
+}
+
+.Таблица5_E3 {
+    vertical-align: top;
+    padding-left: 0.0194in;
+    padding-right: 0.0194in;
+    padding-top: 0in;
+    padding-bottom: 0in;
+    border-left-width: 0, 0176cm;
+    border-left-style: solid;
+    border-left-color: #000000;
+    border-right-width: 0, 0176cm;
+    border-right-style: solid;
+    border-right-color: #000000;
+    border-top-style: none;
+    border-bottom-width: 0, 0176cm;
+    border-bottom-style: solid;
+    border-bottom-color: #000000;
+    writing-mode: lr-tb;
+}
+
+.Таблица5_E4 {
+    vertical-align: top;
+    padding-left: 0.0194in;
+    padding-right: 0.0194in;
+    padding-top: 0in;
+    padding-bottom: 0in;
+    border-left-width: 0, 0176cm;
+    border-left-style: solid;
+    border-left-color: #000000;
+    border-right-width: 0, 0088cm;
+    border-right-style: solid;
+    border-right-color: #000000;
+    border-top-width: 0, 0176cm;
+    border-top-style: solid;
+    border-top-color: #000000;
+    border-bottom-width: 0, 0176cm;
+    border-bottom-style: solid;
+    border-bottom-color: #000000;
+    writing-mode: lr-tb;
+}
+
+.Таблица6_A1 {
+    vertical-align: top;
+    padding-left: 0.0194in;
+    padding-right: 0.0194in;
+    padding-top: 0in;
+    padding-bottom: 0in;
+    border-style: none;
+    writing-mode: lr-tb;
+}
+
+.Таблица6_B2 {
+    vertical-align: bottom;
+    padding-left: 0.0194in;
+    padding-right: 0.0194in;
+    padding-top: 0in;
+    padding-bottom: 0in;
+    border-style: none;
+    writing-mode: lr-tb;
+}
+
+.Таблица6_C3 {
+    vertical-align: bottom;
+    padding-left: 0.0194in;
+    padding-right: 0.0194in;
+    padding-top: 0in;
+    padding-bottom: 0in;
+    border-left-style: none;
+    border-right-style: none;
+    border-top-width: 0, 0176cm;
+    border-top-style: solid;
+    border-top-color: #000000;
+    border-bottom-style: none;
+    writing-mode: lr-tb;
+}
+
+.Таблица6_C4 {
+    vertical-align: bottom;
+    padding-left: 0.0194in;
+    padding-right: 0.0194in;
+    padding-top: 0in;
+    padding-bottom: 0in;
+    border-left-style: none;
+    border-right-style: none;
+    border-top-width: 0, 0176cm;
+    border-top-style: solid;
+    border-top-color: #000000;
+    border-bottom-width: 0, 0176cm;
+    border-bottom-style: solid;
+    border-bottom-color: #000000;
+    writing-mode: lr-tb;
+}
+
+.Таблица7_A1 {
+    vertical-align: top;
+    padding-left: 0.0194in;
+    padding-right: 0.0194in;
+    padding-top: 0in;
+    padding-bottom: 0in;
+    border-style: none;
+    writing-mode: lr-tb;
+}
+
+.Таблица7_A5 {
+    vertical-align: top;
+    padding-left: 0.0194in;
+    padding-right: 0.0194in;
+    padding-top: 0in;
+    padding-bottom: 0in;
+    border-left-width: 0, 0088cm;
+    border-left-style: solid;
+    border-left-color: #000000;
+    border-right-style: none;
+    border-top-width: 0, 0088cm;
+    border-top-style: solid;
+    border-top-color: #000000;
+    border-bottom-style: none;
+    writing-mode: lr-tb;
+}
+
+.Таблица7_A6 {
+    vertical-align: top;
+    padding-left: 0.0194in;
+    padding-right: 0.0194in;
+    padding-top: 0in;
+    padding-bottom: 0in;
+    border-left-width: 0, 0088cm;
+    border-left-style: solid;
+    border-left-color: #000000;
+    border-right-style: none;
+    border-top-style: none;
+    border-bottom-width: 0, 0088cm;
+    border-bottom-style: solid;
+    border-bottom-color: #000000;
+    writing-mode: lr-tb;
+}
+
+.Таблица7_G2 {
+    vertical-align: top;
+    padding-left: 0.0194in;
+    padding-right: 0.0194in;
+    padding-top: 0in;
+    padding-bottom: 0in;
+    border-left-style: none;
+    border-right-style: none;
+    border-top-style: none;
+    border-bottom-width: 0, 0176cm;
+    border-bottom-style: solid;
+    border-bottom-color: #000000;
+    writing-mode: lr-tb;
+}
+
+.Таблица7_Q5 {
+    vertical-align: top;
+    padding-left: 0.0194in;
+    padding-right: 0.0194in;
+    padding-top: 0in;
+    padding-bottom: 0in;
+    border-left-width: 0, 0088cm;
+    border-left-style: solid;
+    border-left-color: #000000;
+    border-right-style: none;
+    border-top-width: 0, 0088cm;
+    border-top-style: solid;
+    border-top-color: #000000;
+    border-bottom-width: 0, 0088cm;
+    border-bottom-style: solid;
+    border-bottom-color: #000000;
+    writing-mode: lr-tb;
+}
+
+.Таблица7_U5 {
+    vertical-align: top;
+    padding-left: 0.0194in;
+    padding-right: 0.0194in;
+    padding-top: 0in;
+    padding-bottom: 0in;
+    border-left-width: 0, 0088cm;
+    border-left-style: solid;
+    border-left-color: #000000;
+    border-right-width: 0, 0088cm;
+    border-right-style: solid;
+    border-right-color: #000000;
+    border-top-width: 0, 0088cm;
+    border-top-style: solid;
+    border-top-color: #000000;
+    border-bottom-style: none;
+    writing-mode: lr-tb;
+}
+
+.Таблица7_U7 {
+    vertical-align: top;
+    padding-left: 0.0194in;
+    padding-right: 0.0194in;
+    padding-top: 0in;
+    padding-bottom: 0in;
+    border-width: 0, 0088cm;
+    border-style: solid;
+    border-color: #000000;
+    writing-mode: lr-tb;
+}
+
+.Таблица8_A1 {
+    vertical-align: top;
+    padding-left: 0.0194in;
+    padding-right: 0.0194in;
+    padding-top: 0in;
+    padding-bottom: 0in;
+    border-style: none;
+    writing-mode: lr-tb;
+}
+
+.Таблица8_A4 {
+    vertical-align: top;
+    padding-left: 0.0194in;
+    padding-right: 0.0194in;
+    padding-top: 0in;
+    padding-bottom: 0in;
+    border-left-style: none;
+    border-right-style: none;
+    border-top-style: none;
+    border-bottom-width: 0, 0088cm;
+    border-bottom-style: solid;
+    border-bottom-color: #000000;
+    writing-mode: lr-tb;
+}
+
+.Таблица8_A5 {
+    vertical-align: top;
+    padding-left: 0.0194in;
+    padding-right: 0.0194in;
+    padding-top: 0in;
+    padding-bottom: 0in;
+    border-left-width: 0, 0088cm;
+    border-left-style: solid;
+    border-left-color: #000000;
+    border-right-style: none;
+    border-top-style: none;
+    border-bottom-width: 0, 0088cm;
+    border-bottom-style: solid;
+    border-bottom-color: #000000;
+    writing-mode: lr-tb;
+}
+
+.Таблица8_A6 {
+    vertical-align: top;
+    padding-left: 0.0194in;
+    padding-right: 0.0194in;
+    padding-top: 0in;
+    padding-bottom: 0in;
+    border-left-width: 0, 0088cm;
+    border-left-style: solid;
+    border-left-color: #000000;
+    border-right-style: none;
+    border-top-width: 0, 0088cm;
+    border-top-style: solid;
+    border-top-color: #000000;
+    border-bottom-width: 0, 0088cm;
+    border-bottom-style: solid;
+    border-bottom-color: #000000;
+    writing-mode: lr-tb;
+}
+
+.Таблица8_A8 {
+    vertical-align: top;
+    padding-left: 0.0194in;
+    padding-right: 0.0194in;
+    padding-top: 0in;
+    padding-bottom: 0in;
+    border-left-width: 0, 0088cm;
+    border-left-style: solid;
+    border-left-color: #000000;
+    border-right-style: none;
+    border-top-width: 0, 0088cm;
+    border-top-style: solid;
+    border-top-color: #000000;
+    border-bottom-style: none;
+    writing-mode: lr-tb;
+}
+
+.Таблица8_B9 {
+    vertical-align: top;
+    padding-left: 0.0194in;
+    padding-right: 0.0194in;
+    padding-top: 0in;
+    padding-bottom: 0in;
+    border-left-style: none;
+    border-right-style: none;
+    border-top-width: 0, 0088cm;
+    border-top-style: solid;
+    border-top-color: #000000;
+    border-bottom-width: 0, 0176cm;
+    border-bottom-style: solid;
+    border-bottom-color: #000000;
+    writing-mode: lr-tb;
+}
+
+.Таблица8_C9 {
+    vertical-align: top;
+    padding-left: 0.0194in;
+    padding-right: 0.0194in;
+    padding-top: 0in;
+    padding-bottom: 0in;
+    border-left-style: none;
+    border-right-style: none;
+    border-top-width: 0, 0088cm;
+    border-top-style: solid;
+    border-top-color: #000000;
+    border-bottom-style: none;
+    writing-mode: lr-tb;
+}
+
+.Таблица8_D2 {
+    vertical-align: top;
+    padding-left: 0.0194in;
+    padding-right: 0.0194in;
+    padding-top: 0in;
+    padding-bottom: 0in;
+    border-left-style: none;
+    border-right-style: none;
+    border-top-style: none;
+    border-bottom-width: 0, 0176cm;
+    border-bottom-style: solid;
+    border-bottom-color: #000000;
+    writing-mode: lr-tb;
+}
+
+.Таблица8_F7 {
+    vertical-align: middle;
+    padding-left: 0.0194in;
+    padding-right: 0.0194in;
+    padding-top: 0in;
+    padding-bottom: 0in;
+    border-left-width: 0, 0088cm;
+    border-left-style: solid;
+    border-left-color: #000000;
+    border-right-style: none;
+    border-top-width: 0, 0088cm;
+    border-top-style: solid;
+    border-top-color: #000000;
+    border-bottom-width: 0, 0088cm;
+    border-bottom-style: solid;
+    border-bottom-color: #000000;
+    writing-mode: lr-tb;
+}
+
+.Таблица8_F9 {
+    vertical-align: middle;
+    padding-left: 0.0194in;
+    padding-right: 0.0194in;
+    padding-top: 0in;
+    padding-bottom: 0in;
+    border-left-width: 0, 0088cm;
+    border-left-style: solid;
+    border-left-color: #000000;
+    border-right-style: none;
+    border-top-width: 0, 0088cm;
+    border-top-style: solid;
+    border-top-color: #000000;
+    border-bottom-style: none;
+    writing-mode: lr-tb;
+}
+
+.Таблица8_H5 {
+    vertical-align: top;
+    padding-left: 0.0194in;
+    padding-right: 0.0194in;
+    padding-top: 0in;
+    padding-bottom: 0in;
+    border-width: 0, 0088cm;
+    border-style: solid;
+    border-color: #000000;
+    writing-mode: lr-tb;
+}
+
+.Таблица8_H7 {
+    vertical-align: middle;
+    padding-left: 0.0194in;
+    padding-right: 0.0194in;
+    padding-top: 0in;
+    padding-bottom: 0in;
+    border-width: 0, 0088cm;
+    border-style: solid;
+    border-color: #000000;
+    writing-mode: lr-tb;
+}
+
+.Таблица8_H9 {
+    vertical-align: middle;
+    padding-left: 0.0194in;
+    padding-right: 0.0194in;
+    padding-top: 0in;
+    padding-bottom: 0in;
+    border-left-width: 0, 0088cm;
+    border-left-style: solid;
+    border-left-color: #000000;
+    border-right-width: 0, 0088cm;
+    border-right-style: solid;
+    border-right-color: #000000;
+    border-top-width: 0, 0088cm;
+    border-top-style: solid;
+    border-top-color: #000000;
+    border-bottom-style: none;
+    writing-mode: lr-tb;
+}
+
+.Таблица9_A1 {
+    vertical-align: top;
+    padding-left: 0.0194in;
+    padding-right: 0.0194in;
+    padding-top: 0in;
+    padding-bottom: 0in;
+    border-style: none;
+    writing-mode: lr-tb;
+}
+
+.Таблица9_B1 {
+    vertical-align: top;
+    padding-left: 0.0194in;
+    padding-right: 0.0194in;
+    padding-top: 0in;
+    padding-bottom: 0in;
+    border-left-style: none;
+    border-right-style: none;
+    border-top-style: none;
+    border-bottom-width: 0, 0176cm;
+    border-bottom-style: solid;
+    border-bottom-color: #000000;
+    writing-mode: lr-tb;
+}
+
+.Таблица1_A {
+    width: 0.2215in;
+}
+
+.Таблица1_F {
+    width: 0.0931in;
+}
+
+.Таблица1_G {
+    width: 0.0986in;
+}
+
+.Таблица1_H {
+    width: 0.0299in;
+}
+
+.Таблица1_I {
+    width: 0.1674in;
+}
+
+.Таблица1_J {
+    width: 0.0542in;
+}
+
+.Таблица1_K {
+    width: 0.0438in;
+}
+
+.Таблица1_L {
+    width: 0.1785in;
+}
+
+.Таблица1_M {
+    width: 0.0188in;
+}
+
+.Таблица1_N {
+    width: 0.2028in;
+}
+
+.Таблица1_P {
+    width: 0.0681in;
+}
+
+.Таблица1_Q {
+    width: 0.1535in;
+}
+
+.Таблица1_U {
+    width: 0.2222in;
+}
+
+.Таблица1_X {
+    width: 0.0917in;
+}
+
+.Таблица1_Y {
+    width: 0.1299in;
+}
+
+.Таблица1_Z {
+    width: 0.0667in;
+}
+
+.Таблица1_a {
+    width: 0.1549in;
+}
+
+.Таблица1_e {
+    width: 0.066in;
+}
+
+.Таблица1_f {
+    width: 0.0257in;
+}
+
+.Таблица1_g {
+    width: 0.5931in;
+}
+
+.Таблица1_h {
+    width: 0.0174in;
+}
+
+.Таблица1_i {
+    width: 0.0528in;
+}
+
+.Таблица1_j {
+    width: 0.2958in;
+}
+
+.Таблица1_l {
+    width: 0.3056in;
+}
+
+.Таблица10_A {
+    width: 0.6458in;
+}
+
+.Таблица10_B {
+    width: 0.9292in;
+}
+
+.Таблица10_C {
+    width: 1.0833in;
+}
+
+.Таблица10_D {
+    width: 1.0986in;
+}
+
+.Таблица10_E {
+    width: 1.0993in;
+}
+
+.Таблица10_J {
+    width: 1.1917in;
+}
+
+.Таблица11_A {
+    width: 0.3153in;
+}
+
+.Таблица11_B {
+    width: 2.9903in;
+}
+
+.Таблица11_C {
+    width: 0.0417in;
+}
+
+.Таблица11_D {
+    width: 0.1972in;
+}
+
+.Таблица11_E {
+    width: 0.2951in;
+}
+
+.Таблица11_F {
+    width: 0.3146in;
+}
+
+.Таблица12_A {
+    width: 1.6292in;
+}
+
+.Таблица12_D {
+    width: 1.6396in;
+}
+
+.Таблица2_A {
+    width: 0.3646in;
+}
+
+.Таблица2_B {
+    width: 1.2299in;
+}
+
+.Таблица2_C {
+    width: 1.8708in;
+}
+
+.Таблица2_D {
+    width: 1.525in;
+}
+
+.Таблица2_E {
+    width: 1.5264in;
+}
+
+.Таблица3_A {
+    width: 0.3153in;
+}
+
+.Таблица3_B {
+    width: 1.2792in;
+}
+
+.Таблица3_C {
+    width: 1.8708in;
+}
+
+.Таблица3_D {
+    width: 1.5257in;
+}
+
+.Таблица4_A {
+    width: 0.3153in;
+}
+
+.Таблица4_B {
+    width: 1.2792in;
+}
+
+.Таблица4_C {
+    width: 1.8708in;
+}
+
+.Таблица4_D {
+    width: 1.525in;
+}
+
+.Таблица4_E {
+    width: 1.5264in;
+}
+
+.Таблица5_A {
+    width: 0.3153in;
+}
+
+.Таблица5_B {
+    width: 1.2792in;
+}
+
+.Таблица5_C {
+    width: 1.8708in;
+}
+
+.Таблица5_D {
+    width: 1.5257in;
+}
+
+.Таблица6_A {
+    width: 0.5118in;
+}
+
+.Таблица6_B {
+    width: 3.741in;
+}
+
+.Таблица6_C {
+    width: 1.3778in;
+}
+
+.Таблица6_D {
+    width: 0.8861in;
+}
+
+.Таблица7_A {
+    width: 0.7in;
+}
+
+.Таблица7_B {
+    width: 0.6063in;
+}
+
+.Таблица7_C {
+    width: 0.6535in;
+}
+
+.Таблица7_F {
+    width: 0.0208in;
+}
+
+.Таблица7_G {
+    width: 0.6326in;
+}
+
+.Таблица7_J {
+    width: 0.6528in;
+}
+
+.Таблица7_K {
+    width: 0.391in;
+}
+
+.Таблица7_L {
+    width: 0.0486in;
+}
+
+.Таблица7_M {
+    width: 0.1972in;
+}
+
+.Таблица7_N {
+    width: 0.0167in;
+}
+
+.Таблица7_O {
+    width: 0.2785in;
+}
+
+.Таблица7_P {
+    width: 0.375in;
+}
+
+.Таблица7_S {
+    width: 0.7306in;
+}
+
+.Таблица7_T {
+    width: 0.5903in;
+}
+
+.Таблица7_U {
+    width: 0.6396in;
+}
+
+.Таблица8_A {
+    width: 0.4132in;
+}
+
+.Таблица8_B {
+    width: 1.0833in;
+}
+
+.Таблица8_C {
+    width: 0.3938in;
+}
+
+.Таблица8_D {
+    width: 2.3625in;
+}
+
+.Таблица8_E {
+    width: 0.1965in;
+}
+
+.Таблица8_F {
+    width: 0.2951in;
+}
+
+.Таблица8_H {
+    width: 1.3792in;
+}
+
+.Таблица9_A {
+    width: 3.2875in;
+}
+
+.Таблица9_B {
+    width: 2.9833in;
+}
+
+.Таблица9_C {
+    width: 0.0486in;
+}
+
+.Таблица9_D {
+    width: 0.1972in;
+}
+
+.Таблица9_E {
+    width: 0.2951in;
+}
+
+.Таблица9_F {
+    width: 3.5201in;
+}
+
+.T1 {
+    color: #000000;
+}
+
+.T2 {
+    color: #000000;
+    letter-spacing: -0.0016in;
+}
+
+.T3 {
+    color: #000000;
+    letter-spacing: -0.0008in;
+}
+
+.T4 {
+    color: #000000;
+}
+
+.T5 {
+    font-family: Times New Roman;
+    font-size: 11pt;
+}
+
+.T6 {
+    font-family: Times New Roman;
+    font-size: 11pt;
+}

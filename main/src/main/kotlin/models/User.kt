@@ -32,7 +32,9 @@ class User: Model() {
     /**
      * Method used to validate model fields before create or update model in database
      * @param fields: Fields to validate
-     * @param
+     * @param isNew: Is validated item is new
+     * @param user_id: ID of user to which affected record should belong
+     * @returns HashMap of errors or null if no validation errors
      */
     fun validate(fields: JSONObject, isNew:Boolean=false,user_id:String?=null):HashMap<String,Any>? {
         val errors = HashMap<String,Any>()
@@ -83,6 +85,19 @@ class User: Model() {
         else if (fields["password"].toString() != fields["confirm_password"].toString())
             return t("Пароли должны совпадать")
         return null
+    }
+
+    /**
+     * Method used to get model from database which meets specified condition
+     * @param condition: SQL condition to match
+     * @param user_id: ID of user to which affected record should belong
+     * @returns User model or null if not found
+     */
+    override fun getItemByCondition(condition:String,user_id:String?):User? {
+        val model = super.getItemByCondition(condition, user_id) ?: return null
+        val user = User()
+        user.setRecord(model.getRecord())
+        return user
     }
 
     override val modelName:String

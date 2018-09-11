@@ -2,6 +2,7 @@ package models
 
 import db.DBManager
 import db.Database
+import i18n.t
 import org.json.JSONObject
 import java.util.concurrent.ConcurrentHashMap
 import java.io.Serializable
@@ -158,6 +159,19 @@ open class Model {
     }
 
     /**
+     * Method returns first item which meets provided condition
+     * @param condition: SQL condition
+     * @param user_id: ID of user to which affected record should belong
+     * @return Found model or null if model not found
+     */
+    open fun getItemByCondition(condition:String,user_id:String?=null): Model? {
+        val list = this.getList(hashMapOf("condition" to condition),user_id)
+        if (list.isNotEmpty())
+            return list[0]
+        return null
+    }
+
+    /**
      * Method used to post new model in database
      * @param user_id: ID of user to which affected record should belong
      * @return: Either HashMap with errors or null if no errors
@@ -167,9 +181,9 @@ open class Model {
         if (result != null) {
             return result
         }
-        val db = DBManager.getDB() ?: return hashMapOf("general" to "Database connection error")
+        val db = DBManager.getDB() ?: return hashMapOf("general" to t("Ошибка подключения к базе данных"))
         val model = db.postItem(this,user_id)
-        return model?.getRecord() ?: hashMapOf("general" to "Internal error when save to DB") as HashMap<String, Any>
+        return model?.getRecord() ?: hashMapOf("general" to t("Внутренняя ошибка при записи в базу данных")) as HashMap<String, Any>
     }
 
     /**
@@ -182,9 +196,9 @@ open class Model {
         if (result != null) {
             return result
         }
-        val db = DBManager.getDB() ?: return hashMapOf("general" to "Database connection error")
+        val db = DBManager.getDB() ?: return hashMapOf("general" to t("Ошибка подключения к базе данных"))
         val model = db.putItem(this,user_id)
-        return model?.getRecord() ?: hashMapOf("general" to "Internal error when save to DB") as HashMap<String, Any>
+        return model?.getRecord() ?: hashMapOf("general" to t("Внутренняя ошибка при записи в базу данных")) as HashMap<String, Any>
 
     }
 
@@ -194,7 +208,7 @@ open class Model {
      * @return HashMap which is either removed record or information about validation or system errors
      */
     fun deleteItems(ids:String,user_id:String?=null): HashMap<String,Any>? {
-        val db = DBManager.getDB() ?: return hashMapOf("errors" to hashMapOf("general" to "Database connection error"))
+        val db = DBManager.getDB() ?: return hashMapOf("errors" to hashMapOf("general" to t("Ошибка подключения к базе данных")))
         return db.deleteItems(this,ids,user_id)
     }
 

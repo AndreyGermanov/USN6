@@ -1,0 +1,14 @@
+{
+    "web": {
+        "port": 8085,
+        "root": "public",
+        "host": "localhost"
+    },
+    "db": {
+        "password": "admin",
+        "port": 2480,
+        "host": "localhost",
+        "name": "wab3",
+        "login": "admin"
+    }
+}

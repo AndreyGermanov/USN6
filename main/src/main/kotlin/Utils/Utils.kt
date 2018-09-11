@@ -2,6 +2,7 @@ package Utils
 
 import com.google.gson.Gson
 import io.ktor.http.Parameters
+import org.json.simple.JSONObject
 import java.net.URL
 import java.net.URLDecoder
 import java.util.regex.Pattern
@@ -97,4 +98,14 @@ fun String.startsWith(array:ArrayList<String>):Boolean {
     val source = this;
     val result = array.filter({source.startsWith(it)})
     return result.isNotEmpty()
+}
+
+fun JSONObjectToHashMap(source: JSONObject):HashMap<String,Any> {
+    val result:HashMap<String,Any> = HashMap()
+    for (key in source.keys) {
+        key as String
+        val value = source[key] as String
+        result[key] = value
+    }
+    return result
 }

@@ -5,6 +5,7 @@ package controllers
 import Utils.paramsToHashMap
 import Utils.queryStringToJSON
 import com.google.gson.Gson
+import io.ktor.application.ApplicationCall
 import io.ktor.application.call
 import io.ktor.auth.UserIdPrincipal
 import io.ktor.auth.authentication
@@ -17,6 +18,7 @@ import io.ktor.request.receiveText
 import io.ktor.response.respond
 import io.ktor.response.respondText
 import io.ktor.routing.*
+import kotlinx.coroutines.experimental.launch
 import org.json.simple.parser.JSONParser
 import models.Model
 import org.json.JSONObject
@@ -166,6 +168,20 @@ open class Controller:CRUDControllerInterface {
 
     override fun getModelInstance():Model {
         return Model()
+    }
+
+    /**
+     * Method used to return standard response to API call, based on standard result of request
+     * @param call: Application Call object
+     * @param result: Result of function, which processed user request
+     * @returns: JSON string with standard response
+     */
+    fun getResponse(result:HashMap<String,Any>?):String {
+        val gson = Gson()
+        if (result === null)
+            return gson.toJson(hashMapOf("status" to "ok"))
+        else
+            return gson.toJson(hashMapOf("status" to "error", "errors" to result))
     }
 }
 

@@ -26,7 +26,7 @@ object TestEnvironment {
                 "db" to hashMapOf(
                         "host" to "localhost",
                         "port" to 2480,
-                        "name" to "test",
+                        "name" to "test2",
                         "login" to "admin",
                         "password" to "admin"
                 ),
@@ -34,7 +34,7 @@ object TestEnvironment {
                         "host" to "smtp.gmail.com",
                         "port" to "465",
                         "login" to "germanovzce@gmail.com",
-                        "password" to "FckMce123",
+                        "password" to "",
                         "from" to "6@usn.ru"
                 )
         )
@@ -51,18 +51,38 @@ object TestEnvironment {
         }.start()
         Thread.sleep(2000)
         val db = DBManager.getDB() as OrientDatabase
-        db.execQuery("INSERT INTO users set name='test', password='${HashUtils.sha512("test")}',surname='Test'")
+        db.execQuery("INSERT INTO users set name='test', password='${HashUtils.sha512("test")}',active=1," +
+                "activation_token='${HashUtils.sha512("testtest@test.com")}',email='test@test.com")
     }
 
     fun getTestCompanyUid():String {
-        val query = "SELECT @rid as uid FROM companies where name='Test'"
+        return this.getRid("name='Test'","companies",true) ?: ""
+    }
+
+    fun getUserRid(condition:String):String {
+        return this.getRid(condition,"users") ?: ""
+    }
+
+    fun getRid(condition:String,model:String,clean:Boolean=false):String? {
+        val query = "SELECT @rid from $model where $condition"
         val db = DBManager.getDB() as OrientDatabase
         val result = db.execQueryJSON(query)
         val row = db.getFirstResult(result)
-        if (row!=null && row.has("uid")) {
-            return row["uid"].toString().replace("#","").replace(":","_")
+        if (row!=null && row.has("@rid")) {
+            return if (clean)
+                this.cleanRid(row["@rid"].toString())
+            else
+                row["@rid"].toString()
         }
-        return ""
+        return null
+    }
+
+    fun cleanRid(rid:String):String {
+        return rid.replace("#","").replace(":","_")
+    }
+
+    fun uncleadRid(rid:String):String {
+        return "#${rid.replace("#","").replace("_",":")}"
     }
 
     fun addTestCompany() {
