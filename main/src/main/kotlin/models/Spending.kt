@@ -80,7 +80,6 @@ class Spending: Model() {
                     if (amount <= 0) errors["amount"] = t("Указана некорректная сумма")
                 }
             } catch (e: Exception) {
-                println(e.message)
                 errors["amount"] = t("Указана некорректная сумма")
             }
         }

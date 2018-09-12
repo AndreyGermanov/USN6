@@ -1,6 +1,6 @@
 package models
 
-import Utils.HashUtils
+import utils.HashUtils
 import i18n.t
 import org.json.simple.JSONObject
 import java.io.Serializable

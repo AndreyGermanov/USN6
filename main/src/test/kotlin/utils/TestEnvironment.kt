@@ -1,11 +1,9 @@
 package utils
 
-import Utils.HashUtils
 import com.google.gson.Gson
 
 import db.DBManager
 import db.OrientDatabase
-import kotlinx.coroutines.experimental.async
 import kotlinx.coroutines.experimental.launch
 import org.json.simple.JSONObject
 import org.json.simple.parser.JSONParser

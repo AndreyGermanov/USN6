@@ -2,7 +2,7 @@
 
 package controllers
 
-import Utils.SendMail
+import utils.SendMail
 import com.google.gson.Gson
 import i18n.t
 import io.ktor.application.call

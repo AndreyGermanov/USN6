@@ -1,6 +1,6 @@
 package db
 
-import Utils.HashUtils
+import utils.HashUtils
 import com.google.gson.Gson
 import khttp.structures.authorization.BasicAuthorization
 import models.Model

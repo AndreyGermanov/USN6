@@ -1,8 +1,8 @@
 package controllers
 
-import Utils.HashUtils
-import Utils.JSONObjectToHashMap
-import Utils.SendMail
+import utils.HashUtils
+import utils.jsonObjectToHashMap
+import utils.SendMail
 import i18n.t
 import io.ktor.application.call
 import io.ktor.http.HttpStatusCode
@@ -135,7 +135,7 @@ class UsersController: Controller() {
         val web_config = ConfigManager.webConfig
         return sendEmail(email,t("Сброс пароля"),
                 t("Пожалуйста, перейдите по следующей ссылке для изменения своего пароля")+": "+
-                        "http:${web_config["host"]}:${web_config["port"]}/user/reset/$resetToken")
+                        "http:${web_config["host"]}:${web_config["port"]}#/reset_password/$resetToken")
     }
 
     /**
@@ -191,7 +191,7 @@ class UsersController: Controller() {
     private fun generateToken(fields:Any):String {
         val map = when (fields) {
             is HashMap<*, *> -> fields as HashMap<String,Any>
-            is JSONObject -> JSONObjectToHashMap(fields)
+            is JSONObject -> jsonObjectToHashMap(fields)
             else -> return ""
         }
         return HashUtils.sha512("${map["name"]}${map["email"]}")
@@ -208,7 +208,12 @@ fun Routing.users() {
         call.respond(HttpStatusCode.OK,ctrl.getResponse(ctrl.register(call.receiveText())))
     }
     get("/api/user/activate/{token}") {
-        call.respond(HttpStatusCode.OK,ctrl.getResponse(ctrl.activate(call.parameters["token"]!!)))
+        val result = ctrl.activate(call.parameters["token"]!!)
+        var response = t("Ваша учетная запись активирована, можете входить в систему")
+        if (result !== null) {
+            response = result["general"].toString()
+        }
+        call.respond(HttpStatusCode.OK,response)
     }
     get("/api/user/request_reset_password/{email}") {
         call.respond(HttpStatusCode.OK,ctrl.getResponse(ctrl.requestResetPassword(call.parameters["email"]!!)))

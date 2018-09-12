@@ -2,10 +2,9 @@
 
 package controllers
 
-import Utils.paramsToHashMap
-import Utils.queryStringToJSON
+import utils.paramsToHashMap
+import utils.queryStringToJSON
 import com.google.gson.Gson
-import io.ktor.application.ApplicationCall
 import io.ktor.application.call
 import io.ktor.auth.UserIdPrincipal
 import io.ktor.auth.authentication
@@ -18,7 +17,6 @@ import io.ktor.request.receiveText
 import io.ktor.response.respond
 import io.ktor.response.respondText
 import io.ktor.routing.*
-import kotlinx.coroutines.experimental.launch
 import org.json.simple.parser.JSONParser
 import models.Model
 import org.json.JSONObject
@@ -178,10 +176,10 @@ open class Controller:CRUDControllerInterface {
      */
     fun getResponse(result:HashMap<String,Any>?):String {
         val gson = Gson()
-        if (result === null)
-            return gson.toJson(hashMapOf("status" to "ok"))
+        return if (result === null)
+            gson.toJson(hashMapOf("status" to "ok"))
         else
-            return gson.toJson(hashMapOf("status" to "error", "errors" to result))
+            gson.toJson(hashMapOf("status" to "error", "errors" to result))
     }
 }
 

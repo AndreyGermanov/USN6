@@ -47,7 +47,7 @@ object ConfigManager {
                     "host" to "smtp.gmail.com",
                     "port" to "465",
                     "login" to "germanovzce@gmail.com",
-                    "password" to "CdeKde789",
+                    "password" to "",
                     "from" to "6@usn.ru"
             )
     )
@@ -63,7 +63,6 @@ object ConfigManager {
             val loaded_config = parser.parse(data) as JSONObject
             val validationResult = validateConfig(loaded_config)
             if (validationResult!==null) {
-                println(validationResult)
                 System.exit(1)
             }
             config = loaded_config

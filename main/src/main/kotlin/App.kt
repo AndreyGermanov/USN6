@@ -1,6 +1,6 @@
 @file:Suppress("EXPERIMENTAL_FEATURE_WARNING")
 
-import Utils.startsWith
+import utils.startsWith
 import controllers.*
 import db.DBManager
 import db.OrientDatabase
@@ -66,12 +66,12 @@ object Application {
                 }
                 this.skipWhen {
                     val freeUrls = kotlin.collections.arrayListOf(
-                            "/",
                             "/api/user/register",
                             "/api/user/activate",
                             "/api/user/reset_password",
                             "/api/user/request_reset_password")
-                    if (it.request.httpMethod.value === "OPTIONS" || it.request.uri.startsWith("/static")) true
+                    if (it.request.httpMethod.value === "OPTIONS" || it.request.uri.startsWith("/static") ||
+                            it.request.uri === "/") true
                     else if (it.request.uri.startsWith(freeUrls)) true
                     else if (it.request.queryParameters.contains("token")) {
                         val db = db.DBManager.getDB()

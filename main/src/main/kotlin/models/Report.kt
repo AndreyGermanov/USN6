@@ -1,6 +1,6 @@
 package models
 
-import Utils.isValidEmail
+import utils.isValidEmail
 import i18n.t
 import java.io.Serializable
 

@@ -1,6 +1,6 @@
 package controllers
 
-import Utils.HashUtils
+import utils.HashUtils
 import com.google.gson.Gson
 import khttp.responses.Response
 import models.User
