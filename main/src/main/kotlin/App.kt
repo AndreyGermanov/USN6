@@ -71,7 +71,7 @@ object Application {
                             "/api/user/reset_password",
                             "/api/user/request_reset_password")
                     if (it.request.httpMethod.value === "OPTIONS" || it.request.uri.startsWith("/static") ||
-                            it.request.uri === "/") true
+                            it.request.uri == "/") true
                     else if (it.request.uri.startsWith(freeUrls)) true
                     else if (it.request.queryParameters.contains("token")) {
                         val db = db.DBManager.getDB()

@@ -50,7 +50,7 @@ class UsersController: Controller() {
         val activationToken = this.generateToken(fields)
         user.setRecord(hashMapOf(
             "name" to fields["name"]!!,
-            "password" to fields["password"]!!,
+            "password" to HashUtils.sha512(fields["password"]!!.toString()),
             "email" to fields["email"]!!,
             "activation_token" to activationToken
         ))
@@ -69,7 +69,7 @@ class UsersController: Controller() {
     fun activate(token:String):HashMap<String,Any>? {
         val user = User().getItemByCondition("activation_token='$token'") ?:
             return this.getErrorResponse("Пользователь не найден")
-        if (user["active"]!=0) return this.getErrorResponse("Учетная запись данного пользователя уже активирована")
+        if (user["active"]==1) return this.getErrorResponse("Учетная запись данного пользователя уже активирована")
         user["active"] = 1
         val result = user.putItem()
         if (result.containsKey("general")) return result
