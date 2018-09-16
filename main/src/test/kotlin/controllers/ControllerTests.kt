@@ -1,8 +1,6 @@
 package controllers
 
 import db.DBManager
-import db.OrientDatabase
-import models.Model
 import models.User
 import org.junit.After
 import org.junit.Assert.assertEquals
@@ -18,7 +16,7 @@ class MockController: Controller() {
 
 class ControllerTests {
 
-    var db = OrientDatabase("localhost:2480","test","admin","admin")
+    var db = db.orientdb.OrientDatabase("localhost:2480", "test", "admin", "admin")
     @Before
     fun start() {
         DBManager.setDB(db)

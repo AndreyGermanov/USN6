@@ -44,9 +44,9 @@ interface Database {
      * @param model: Model to which removed items belong
      * @param ids: List of comma separated list of models to delete
      * @param user_id: ID of user to which affected records should belong
-     * @return: Returns null if success or HashMap of error descriptions if error
+     * @return: Returns true if success and false otherwiws
      */
-    fun deleteItems(model:Model,ids:String,user_id:String?=null): HashMap<String,Any>?
+    fun deleteItems(model:Model,ids:String,user_id:String?=null): Boolean
 
    /**
     * Method tries to find record of specified model by UID in database and populate

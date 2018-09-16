@@ -97,7 +97,7 @@ open class Controller:CRUDControllerInterface {
     }
 
     override fun getCount(options: HashMap<String, Any>?,user_id:String?): Int {
-        return getModelInstance().getCount(options)
+        return getModelInstance().getCount(options,user_id)
     }
 
     override fun getList(options:HashMap<String,Any>?,user_id:String?):ArrayList<HashMap<String, Any>> {
@@ -143,7 +143,7 @@ open class Controller:CRUDControllerInterface {
     override fun putItem(id:String,params:String,user_id:String?): HashMap<String,Any> {
         val item = getModelInstance().getItem(id,user_id)
         if (item === null) {
-            return hashMapOf("general" to "Could not find object to delete")
+            return hashMapOf("general" to "Could not find object to update")
         }
         val text = queryStringToJSON(params)
         val parser = JSONParser()

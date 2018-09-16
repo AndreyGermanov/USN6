@@ -3,7 +3,7 @@
 import utils.startsWith
 import controllers.*
 import db.DBManager
-import db.OrientDatabase
+import db.orientdb.OrientDatabase
 import i18n.t
 import io.ktor.application.ApplicationCallPipeline
 import io.ktor.application.call
@@ -47,7 +47,7 @@ object Application {
         host =ConfigManager.webConfig["host"].toString()
         val conf = ConfigManager.dbConfig
         DBManager.setDB(OrientDatabase("${conf["host"].toString()}:${conf["port"].toString()}",
-                conf["name"].toString(),conf["login"].toString(),conf["password"].toString()))
+                conf["name"].toString(), conf["login"].toString(), conf["password"].toString()))
         Timer().schedule(cleanCacheDirs(),0,3000)
         val server = embeddedServer(Netty, port = port) {
             install(Authentication) {

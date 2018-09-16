@@ -209,7 +209,10 @@ open class Model {
      */
     fun deleteItems(ids:String,user_id:String?=null): HashMap<String,Any>? {
         val db = DBManager.getDB() ?: return hashMapOf("errors" to hashMapOf("general" to t("Ошибка подключения к базе данных")))
-        return db.deleteItems(this,ids,user_id)
+        if (!db.deleteItems(this,ids,user_id)) {
+            return hashMapOf("errors" to hashMapOf("general" to t("Внутренняя ошибка при удалении из базы данных")))
+        }
+        return null
     }
 
     /**

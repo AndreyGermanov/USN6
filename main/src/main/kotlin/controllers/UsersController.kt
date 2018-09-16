@@ -122,7 +122,7 @@ class UsersController: Controller() {
         val web_config = ConfigManager.webConfig
         return sendEmail(email,t("Активация учетной записи"),
                 t("Пожалуйста, перейдите по следующей ссылке для активации своей учетной записи")+": "+
-                        "http:${web_config["host"]}:${web_config["port"]}/api/user/activate/$activationToken")
+                        "http://${web_config["host"]}:${web_config["port"]}/api/user/activate/$activationToken")
     }
 
     /**
@@ -135,7 +135,7 @@ class UsersController: Controller() {
         val web_config = ConfigManager.webConfig
         return sendEmail(email,t("Сброс пароля"),
                 t("Пожалуйста, перейдите по следующей ссылке для изменения своего пароля")+": "+
-                        "http:${web_config["host"]}:${web_config["port"]}#/reset_password/$resetToken")
+                        "http://${web_config["host"]}:${web_config["port"]}#/reset_password/$resetToken")
     }
 
     /**

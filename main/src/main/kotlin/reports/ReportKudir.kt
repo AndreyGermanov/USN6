@@ -3,7 +3,7 @@ package reports
 import com.github.jhonnymertz.wkhtmltopdf.wrapper.Pdf
 import com.github.jhonnymertz.wkhtmltopdf.wrapper.params.Param
 import db.DBManager
-import db.OrientDatabase
+import db.orientdb.OrientDatabase
 import i18n.t
 import models.SpendingTypes
 import org.json.JSONArray

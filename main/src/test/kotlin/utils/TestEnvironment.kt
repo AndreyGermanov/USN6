@@ -3,7 +3,8 @@ package utils
 import com.google.gson.Gson
 
 import db.DBManager
-import db.OrientDatabase
+import db.orientdb.OrientDatabase
+import db.orientdb.OrientDBUtils
 import kotlinx.coroutines.experimental.launch
 import org.json.simple.JSONObject
 import org.json.simple.parser.JSONParser
@@ -65,7 +66,7 @@ object TestEnvironment {
         val query = "SELECT @rid from $model where $condition"
         val db = DBManager.getDB() as OrientDatabase
         val result = db.execQueryJSON(query)
-        val row = db.getFirstResult(result)
+        val row = OrientDBUtils.getFirstResult(result)
         if (row!=null && row.has("@rid")) {
             return if (clean)
                 this.cleanRid(row["@rid"].toString())

@@ -1,7 +1,7 @@
 package reports
 
 import db.DBManager
-import db.OrientDatabase
+import db.orientdb.OrientDatabase
 import org.json.JSONArray
 import org.json.JSONObject
 import org.junit.After
