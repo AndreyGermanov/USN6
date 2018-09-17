@@ -5,17 +5,40 @@ import com.google.gson.Gson
 import db.DBManager
 import db.orientdb.OrientDatabase
 import db.orientdb.OrientDBUtils
+import khttp.responses.Response
 import kotlinx.coroutines.experimental.launch
+import models.User
+import org.json.simple.JSONArray
 import org.json.simple.JSONObject
 import org.json.simple.parser.JSONParser
 import system.ConfigManager
 import java.nio.file.Files
 import java.nio.file.Paths
+import java.util.*
+
+class ResponseParser(private val response:Response) {
+    fun asObject():JSONObject {
+        val parser = JSONParser()
+        return try {
+            parser.parse(response.text) as JSONObject
+        } catch (e:Exception) {
+            JSONObject()
+        }
+    }
+    fun asArray():JSONArray {
+        val parser = JSONParser()
+        return try {
+            parser.parse(response.text) as JSONArray
+        } catch (e:Exception) {
+            JSONArray()
+        }
+    }
+}
 
 object TestEnvironment {
 
-    fun createEnvironment() {
-        var defaultConfig = hashMapOf(
+    private fun setupEnvironment() {
+        val defaultConfig = hashMapOf(
                 "web" to hashMapOf(
                         "host" to "localhost",
                         "port" to 8086,
@@ -49,9 +72,17 @@ object TestEnvironment {
             Application.run()
         }.start()
         Thread.sleep(2000)
+    }
+
+    private fun createInitialUser() {
         val db = DBManager.getDB() as OrientDatabase
         db.execQuery("INSERT INTO users set name='test', password='${HashUtils.sha512("test")}',active=1," +
-                "activation_token='${HashUtils.sha512("testtest@test.com")}',email='test@test.com")
+                "activation_token='${HashUtils.sha512("testtest@test.com")}',email='test@test.com'")
+    }
+
+    fun createEnvironment() {
+        setupEnvironment()
+        createInitialUser()
     }
 
     fun getTestCompanyUid():String {
@@ -84,8 +115,9 @@ object TestEnvironment {
         return "#${rid.replace("#","").replace("_",":")}"
     }
 
-    fun addTestCompany() {
-        val query = "INSERT INTO companies SET name='Test',inn='312311006772',kpp='123456789',type=2,address='Test addr'"
+    fun addTestCompany(user_id:String="") {
+        val query = "INSERT INTO companies SET name='Test',inn='312311006772',kpp='123456789',type=2," +
+                "address='Test addr',user=$user_id"
         (DBManager.getDB() as OrientDatabase).execQuery(query)
     }
 
@@ -101,8 +133,36 @@ object TestEnvironment {
             Files.delete(Paths.get("/tmp/WAB3/config.json"))
             Files.delete(Paths.get("/tmp/WAB3"))
         } catch (e:Exception) {}
+    }
 
+    fun createTestUser(): User {
+        val user = User()
+        user["name"] = "test2"
+        user["email"] = "andrey@it-port.ru"
+        user["active"] = 0
+        user["password"] = "111111"
+        user["activation_token"] = HashUtils.sha512("test2andrey@it-port.ru")
+        user.postItem()
+        return user
+    }
+
+    fun parseResponse(response: Response,asArray:Boolean = false):JSONObject? {
+        return ResponseParser(response).asObject()
+    }
+
+    fun getError(response:JSONObject,field_name:String):String? {
+        val errors = response["errors"] as JSONObject
+        return errors[field_name] as? String
+    }
+
+    fun getAuthToken(login:String,password:String):String {
+        return String(Base64.getEncoder().encode("$login:$password".toByteArray()))
+    }
+
+    fun getBasicAuthHeader(login:String,password:String):Map<String,String> {
+        return mapOf("Authorization" to "Basic ${getAuthToken(login,password)}")
     }
 
 
 }
+

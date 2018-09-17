@@ -1,6 +1,7 @@
 package controllers
 
 import db.DBManager
+import db.orientdb.OrientDatabase
 import models.User
 import org.junit.After
 import org.junit.Assert.assertEquals
@@ -16,24 +17,24 @@ class MockController: Controller() {
 
 class ControllerTests {
 
-    var db = db.orientdb.OrientDatabase("localhost:2480", "test", "admin", "admin")
+    var DB = OrientDatabase("localhost:2480", "test", "admin", "admin")
     @Before
     fun start() {
-        DBManager.setDB(db)
+        DBManager.setDB(DB)
     }
 
     fun populateDB() {
-        db.execQuery("INSERT INTO users SET name='Andrey',surname='Germanov',uid='1'",hashMapOf())
-        db.execQuery("INSERT INTO users SET name='Bob',surname='Johnson',uid='2'",hashMapOf())
-        db.execQuery("INSERT INTO users SET name='Robin',surname='Hood',uid='3'",hashMapOf())
+        DB.execQuery("INSERT INTO users SET name='Andrey',surname='Germanov',uid='1'",hashMapOf())
+        DB.execQuery("INSERT INTO users SET name='Bob',surname='Johnson',uid='2'",hashMapOf())
+        DB.execQuery("INSERT INTO users SET name='Robin',surname='Hood',uid='3'",hashMapOf())
         for (i in 1..100) {
-            db.execQuery("INSERT INTO users SET name='user$i',surname='Sur$i',uid='${i+3}'",hashMapOf())
+            DB.execQuery("INSERT INTO users SET name='user$i',surname='Sur$i',uid='${i+3}'",hashMapOf())
         }
     }
 
     @After
     fun stop() {
-       db.execQuery("DELETE FROM users", hashMapOf())
+        DB.execQuery("DELETE FROM users", hashMapOf())
     }
 
     @Test

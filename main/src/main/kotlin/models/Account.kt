@@ -26,57 +26,49 @@ class Account: Model() {
         get() = "Accounts"
 
     override fun validate(isNew:Boolean,user_id:String?): HashMap<String,Any>? {
-        val errors = HashMap<String,Any>()
-        if (this["bank_name"] == null) {
-            errors["bank_name"] = t("Не указано наименование банка")
-        } else {
-            if (this["bank_name"].toString().trim().isEmpty()) {
-                errors["bank_name"] = "Не указано наименование банка"
-            }
-        }
-        if (this["number"] == null) {
-            errors["number"] = t("Не указан номер счета")
-        }
-        if (this["ks"] == null) {
-            errors["ks"] = t("Не указан корр. счет")
-        }
-        if (this["bik"] == null) {
-            errors["bik"] = t("Не указан БИК")
-        } else {
-            try {
-                val bik = this["bik"].toString().toLong()
-                if (bik <= 0) errors["bik"] = t("Указан некорректный БИК")
-            } catch (e: Exception) {
-                errors["bik"] = t("Указан некорректный БИК")
-            }
-        }
-        if (this["company"] == null) {
-            errors["company"] = t("Не указана организация")
-        } else {
-            if (this["company"].toString().trim().isEmpty()) {
-                errors["company"] = "Не указана организация"
-            }
-        }
+        super.validate(isNew, user_id)
+        validateBankName()
+        validateBik()
+        validateKs()
+        validateNumber(isNew,user_id)
+        validateCompany(user_id)
+        return getValidationResult()
+    }
 
-        if (errors.keys.size != 0) {
-            return errors
+    private fun validateBankName() {
+        if (this["bank_name"] == null || this["bank_name"].toString().trim().isEmpty())
+            errors["bank_name"] = t("Не указано наименование банка")
+    }
+
+    private fun validateNumber(isNew:Boolean,user_id:String?) {
+        if (this["number"] == null || this["number"].toString().isEmpty()) {
+            errors["number"] = t("Не указан номер счета")
+            return
         }
         var condition = "number='${this["number"]}'"
         if (!isNew) {
-            condition += " AND @rid!=#${this["uid"].toString().replace("_",":")}"
+            condition += " AND @rid!=${this["uid"].toString().replace("_",":")}"
         }
-        var options = hashMapOf(
-                "condition" to condition
-        )
-        var items = getList(options as? HashMap<String, Any>)
+        val items = getList(hashMapOf("condition" to condition),user_id)
         if (items.size>0) errors["number"] = t("Счет с таким номером уже есть в базе")
 
-        condition = "@rid=${this["company"]}"
-        options = hashMapOf("condition" to condition)
-        items = Company().getList(options as? HashMap<String, Any>,user_id)
-        if (items.size == 0) errors["company"] = t("Выбрана некорректная организация")
-
-        return if (errors.keys.size > 0) errors else null
     }
 
+    private fun validateKs() {
+        if (this["ks"] == null || this["ks"].toString().isEmpty())
+            errors["ks"] = t("Не указан корр. счет")
+    }
+
+    private fun validateBik() {
+        if (this["bik"] == null || this["bik"].toString().isEmpty()) {
+            errors["bik"] = t("Не указан БИК")
+            return
+        }
+        try {
+            val bik = this["bik"].toString().toLong()
+            if (bik <= 0) errors["bik"] = t("Указан некорректный БИК")
+        } catch (e: Exception) {
+            errors["bik"] = t("Указан некорректный БИК")
+        }
+    }
 }

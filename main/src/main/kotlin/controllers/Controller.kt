@@ -120,10 +120,9 @@ open class Controller:CRUDControllerInterface {
 
     override fun getItem(id:String,user_id:String?):HashMap<String,Any>? {
         val result = getModelInstance().getItem(id,user_id)
-        if (result != null) {
-            return cleanListItem(result)
-        }
-        return null
+        return if (result != null) {
+            cleanListItem(result)
+        } else HashMap()
     }
 
     override fun postItem(params: String,user_id:String?):HashMap<String,Any> {
@@ -219,7 +218,8 @@ fun Routing.crud(modelName:String,ctrl:CRUDControllerInterface) {
                 val count = ctrl.getCount(paramsToHashMap(call.request.queryParameters),user_id).toString()
                 call.respondText(count)
             } else {
-                call.respondText(gson.toJson(ctrl.getItem(call.parameters["id"]!!,user_id)))
+                val result = ctrl.getItem(call.parameters["id"]!!,user_id)
+                call.respondText(gson.toJson(result))
             }
         } else {
             call.respondText(gson.toJson(ctrl.getList(paramsToHashMap(call.request.queryParameters),user_id)))

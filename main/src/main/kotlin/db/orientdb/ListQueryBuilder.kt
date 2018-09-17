@@ -55,11 +55,10 @@ class ListQueryBuilder(val db:OrientDatabase,val model: Model,val options:HashMa
      */
     private fun buildListQuery():String {
         val fields = options["fields"] as? Array<String> ?: arrayOf("*")
-        val field_types = options["field_types"] as HashMap<String, Serializable>
         val fields_sql = ArrayList<String>()
         for (field in fields) {
-            if (field_types.containsKey(field)) {
-                fields_sql.add(buildFieldSelectSql(field,field_types[field] as HashMap<String, Any>))
+            if (model.fieldTypes.containsKey(field)) {
+                fields_sql.add(buildFieldSelectSql(field,model.fieldTypes[field] as HashMap<String, Any>))
             } else {
                 fields_sql.add(field)
             }
@@ -141,7 +140,6 @@ class ListQueryBuilder(val db:OrientDatabase,val model: Model,val options:HashMa
      * @returns String condition
      */
     private fun buildListFilterCondition(): String {
-        val field_types = options["field_types"] as? HashMap<String, Serializable> ?: HashMap()
         if (options.containsKey("filter_fields") && options.containsKey("filter_value")) {
             val filter_fields = options["filter_fields"].toString().split(",")
             val filter_field_conditions = ArrayList<String>()
@@ -149,7 +147,7 @@ class ListQueryBuilder(val db:OrientDatabase,val model: Model,val options:HashMa
             for (filter_field in filter_fields) {
                 filter_field_conditions.add(
                         "${buildFieldSelectSql(filter_field,
-                                field_types[filter_field] as HashMap<String, Any>,
+                                model.fieldTypes[filter_field] as HashMap<String, Any>,
                                 false)}.toLowerCase() like '$filter_value%'")
             }
             return "(${filter_field_conditions.toArray().joinToString(" OR ")})"

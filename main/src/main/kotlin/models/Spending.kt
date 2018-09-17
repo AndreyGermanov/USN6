@@ -9,7 +9,7 @@ import java.io.Serializable
  * Class defines Spending document model. Inherits and overrides methods of Model class and works
  * specifically for it data.
  */
-class Spending: Model() {
+class Spending: Document() {
 
     // Database types of all fields in model
     override val fieldTypes: HashMap<String, Serializable>
@@ -28,94 +28,41 @@ class Spending: Model() {
         get() = "Spendings"
 
     override fun validate(isNew:Boolean,user_id:String?): HashMap<String,Any>? {
-        val errors = HashMap<String,Any>()
-        if (this["number"] == null) {
-            errors["number"] = t("Не указан номер документа")
-        } else {
-            try {
-                val number = this["number"] as Long
-                if (number <= 0) errors["number"] = t("Указан некорректный номер документа")
-            } catch (e: Exception) {
-                errors["number"] = t("Указан некорректный номер документа")
-            }
-        }
+        super.validate(isNew, user_id)
+        validateNumber()
+        validateDate()
+        validateDescription()
+        validateAmount()
+        validateType()
+        validatePeriod()
+        validateCompany(user_id)
+        return getValidationResult()
+    }
 
-        if (this["date"] == null) {
-            errors["date"] = t("Не указана дата документа")
-        } else {
-            try {
-                val date = this["date"] as Long
-                if (date <= 0) errors["date"] = t("Указана некорректная дата документа")
-            } catch (e: Exception) {
-                errors["date"] = t("Указана некорректная дата документа")
-            }
-        }
-
-
-        if (this["description"] == null) {
-            errors["description"] = t("Не указано описание операции")
-        } else {
-            if (this["description"].toString().trim().isEmpty()) {
-                errors["description"] = "Не указано описание операции"
-            }
-        }
-
-        if (this["period"] == null) {
+    private fun validatePeriod() {
+        if (this["period"] == null || this["period"].toString().trim().isEmpty())
             errors["period"] = t("Не указан период расходов")
-        } else {
-            if (this["period"].toString().trim().isEmpty()) {
-                errors["period"] = "Не указан период расходов"
-            }
-        }
+    }
 
-        if (this["amount"] == null) {
-            errors["amount"] = t("Не указана сумма")
-        } else {
-            try {
-                if (this["amount"] is Long) {
-                    val amount = this["amount"] as Long
-                    if (amount <= 0) errors["amount"] = t("Указана некорректная сумма")
-                } else {
-                    val amount = this["amount"] as Double
-                    if (amount <= 0) errors["amount"] = t("Указана некорректная сумма")
-                }
-            } catch (e: Exception) {
-                errors["amount"] = t("Указана некорректная сумма")
-            }
-        }
-
+    private fun validateType() {
         if (this["type"] == null) {
             errors["type"] = t("Не указан тип расходов")
         } else {
             try {
-                val type = this["type"] as Long
-                if (type < 1 || type > 7) errors["type"] = t("Указан некорректный тип расходов")
+                val type = this["type"].toString().toInt()
+                if (SpendingTypes[type] == null ) {
+                    errors["type"] = t("Указан некорректный тип расходов")
+                }
             } catch (e: Exception) {
                 errors["type"] = t("Указан некорректный тип расходов")
             }
         }
-
-
-        if (this["company"] == null) {
-            errors["company"] = t("Не указана организация")
-        } else {
-            if (this["company"].toString().trim().isEmpty()) {
-                errors["company"] = "Не указана организация"
-            }
-        }
-
-        if (errors.keys.size != 0) {
-            return errors
-        }
-
-        val condition = "@rid=${this["company"]}"
-        val options = hashMapOf("condition" to condition)
-        val items = Company().getList(options as? HashMap<String, Any>,user_id)
-        if (items.size == 0) errors["company"] = t("Выбрана некорректная организация")
-
-        return if (errors.keys.size > 0) errors else null
     }
 
+    private fun validateDescription() {
+        if (this["description"] == null || this["description"].toString().trim().isEmpty())
+            errors["description"] = t("Не указано описание операции")
+    }
 }
 
 /**

@@ -40,6 +40,9 @@ open class Model {
     // and only with records, belongs to this "user_id
     open val isUserDependent = true
 
+    // Errors after validation of current record
+    val errors = HashMap<String,Any>()
+
     /**
      * Method used to set data record
      * @param record: Record to set
@@ -115,17 +118,10 @@ open class Model {
     fun getList(options:HashMap<String,Any>? = null,user_id:String?=null): ArrayList<Model> {
         var opts = HashMap<String,Any>()
         var result = ArrayList<Model>()
-        if (options != null) {
-            opts = options
-        }
-        if (!opts.containsKey("fields")) {
-            opts["fields"] = fields
-        }
-        opts["field_types"] = fieldTypes
+        if (options != null) opts = options
+        if (!opts.containsKey("fields")) opts["fields"] = fields
         val db = DBManager.getDB()
-        if (db != null) {
-            result = db.getList(this,opts,user_id)
-        }
+        if (db != null) result = db.getList(this,opts,user_id)
         return result
     }
 
@@ -139,9 +135,7 @@ open class Model {
     fun getCount(options: HashMap<String,Any>? = null,user_id:String?=null): Int {
         val result = 0
         var opts = HashMap<String,Any>()
-        if (options != null) {
-            opts = options
-        }
+        if (options != null) opts = options
         val db = DBManager.getDB() ?: return result
         return db.getCount(this,opts,user_id)
     }
@@ -178,9 +172,7 @@ open class Model {
      */
     fun postItem(user_id:String?=null): HashMap<String,Any> {
         val result = validate(true,user_id)
-        if (result != null) {
-            return result
-        }
+        if (result != null) return result
         val db = DBManager.getDB() ?: return hashMapOf("general" to t("Ошибка подключения к базе данных"))
         val model = db.postItem(this,user_id)
         return model?.getRecord() ?: hashMapOf("general" to t("Внутренняя ошибка при записи в базу данных")) as HashMap<String, Any>
@@ -193,9 +185,7 @@ open class Model {
      */
     fun putItem(user_id:String?=null): HashMap<String,Any> {
         val result = validate(false,user_id)
-        if (result != null) {
-            return result
-        }
+        if (result != null) return result
         val db = DBManager.getDB() ?: return hashMapOf("general" to t("Ошибка подключения к базе данных"))
         val model = db.putItem(this,user_id)
         return model?.getRecord() ?: hashMapOf("general" to t("Внутренняя ошибка при записи в базу данных")) as HashMap<String, Any>
@@ -209,9 +199,8 @@ open class Model {
      */
     fun deleteItems(ids:String,user_id:String?=null): HashMap<String,Any>? {
         val db = DBManager.getDB() ?: return hashMapOf("errors" to hashMapOf("general" to t("Ошибка подключения к базе данных")))
-        if (!db.deleteItems(this,ids,user_id)) {
+        if (!db.deleteItems(this,ids,user_id))
             return hashMapOf("errors" to hashMapOf("general" to t("Внутренняя ошибка при удалении из базы данных")))
-        }
         return null
     }
 
@@ -222,10 +211,9 @@ open class Model {
      */
     fun JSONToHashMap(params: JSONObject): HashMap<String,Any> {
         val result = HashMap<String,Any>()
-        for (field in fields) {
-            if (params.has(field)) {
-                result[field] = if (params[field].toString() == "null") "" else params[field]
-            }
+        fields.map {
+            if (params.has(it))
+                result[it] = if (params[it].toString() == "null") "" else params[it]
         }
         if (params.has("@rid")) {
             result["@rid"] = params["@rid"]!!
@@ -257,6 +245,20 @@ open class Model {
      * @return: Either Hashmap<String,String> with errors or null if no errors
      */
     open fun validate(isNew:Boolean = false,user_id:String?=null):HashMap<String,Any>? {
-        return null
+        errors.clear()
+        return getValidationResult()
+    }
+
+    fun getValidationResult():HashMap<String,Any>? {
+        return if (errors.keys.size > 0) errors else null
+    }
+
+    protected fun validateCompany(user_id:String?) {
+        if (this["company"] == null || this["company"].toString().trim().isEmpty()) {
+            errors["company"] = t("Не указана организация")
+            return
+        }
+        val items = Company().getList(hashMapOf("condition" to "@rid=${this["company"]}"),user_id)
+        if (items.size == 0) errors["company"] = t("Выбрана некорректная организация")
     }
 }

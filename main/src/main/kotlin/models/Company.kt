@@ -25,58 +25,43 @@ class Company: Model() {
         get() = "Companies"
 
     override fun validate(isNew:Boolean,user_id:String?): HashMap<String,Any>? {
-        val errors = HashMap<String,Any>()
-        if (this["name"] == null) {
+        super.validate(isNew, user_id)
+        validateName()
+        validateInn(isNew,user_id)
+        validateAddress()
+        val type = validateType() ?: return getValidationResult()
+        validateKpp(type)
+        return getValidationResult()
+    }
+
+    private fun validateName() {
+        if (this["name"] == null || this["name"].toString().trim().isEmpty())
             errors["name"] = t("Не указано наименование")
-        } else {
-            if (this["name"].toString().trim().isEmpty()) {
-                errors["name"] = "Не указано наименование"
-            }
-        }
+    }
+
+    private fun validateAddress() {
+        if (this["address"] == null || this["address"].toString().trim().isEmpty())
+            errors["address"] = "Не указан адрес"
+    }
+
+    private fun validateInn(isNew:Boolean,user_id:String?) {
         if (this["inn"] == null) {
             errors["inn"] = t("Не указан ИНН")
-        } else {
-            try {
-                val inn = this["inn"].toString().toLong()
-                if (inn <= 0) errors["inn"] = t("Указан некорректный ИНН")
-            } catch (e: Exception) {
+            return
+        }
+        try {
+            if (this["inn"].toString().toLong() <= 0) {
                 errors["inn"] = t("Указан некорректный ИНН")
+                return
             }
+        } catch (e: Exception) {
+            errors["inn"] = t("Указан некорректный ИНН")
+            return
         }
-        var type = 0
-        if (this["type"] == null) {
-            errors["type"] = t("Не указан тип организации")
-        } else {
-            try {
-                type =  Integer.valueOf((this["type"] as Long).toString())
-                if (type != 1 && type != 2) errors["type"] = t("Указан некорректный тип организации")
-            } catch (e: Exception) {
-                errors["type"] = t("Указан некорректный тип организации")
-            }
-        }
-        if (this["kpp"] == null && type.equals(2)) {
-            errors["kpp"] = t("Не указан КПП")
-        } else if (this["kpp"] != null && !type.equals(1)) {
-            try {
-                val kpp = this["kpp"].toString().toLong()
-                if (kpp <= 0) errors["kpp"] = t("Указан некорректный КПП")
-            } catch (e:Exception) {
-                errors["kpp"] = t("Указан некорректный КПП")
-            }
-        }
-        if (this["address"] == null) {
-            errors["address"] = "Не указан адрес"
-        } else {
-            if (this["address"].toString().trim().isEmpty()) {
-                errors["address"] = "Не указан адрес"
-            }
-        }
-        if (errors.keys.size != 0) {
-            return errors
-        }
+
         var condition = "inn='${this["inn"]}'"
         if (!isNew) {
-            condition += " AND @rid!=#${this["uid"].toString().replace("_",":")}"
+            condition += " AND @rid!=${this["uid"].toString().replace("_",":")}"
         }
         val options = hashMapOf(
                 "condition" to condition
@@ -85,9 +70,41 @@ class Company: Model() {
         if (items.size>0) {
             errors["inn"] = t("Организация с таким ИНН уже есть в базе")
         }
-        return if (errors.keys.size > 0) errors else null
     }
 
+    private fun validateType(): Int? {
+        if (this["type"] == null) {
+            errors["type"] = t("Не указан тип организации")
+            return null
+        }
+        try {
+            val type =  Integer.valueOf((this["type"].toString().toLong()).toString())
+            if (type != 1 && type != 2) {
+                errors["type"] = t("Указан некорректный тип организации")
+                return null
+            }
+            return type
+        } catch (e: Exception) {
+            errors["type"] = t("Указан некорректный тип организации")
+            return null
+        }
+    }
+
+    private fun validateKpp(type:Int) {
+        if (this["kpp"] == null && type.equals(2)) {
+            errors["kpp"] = t("Не указан КПП")
+            return
+        }
+        if (this["kpp"] != null && !type.equals(1)) {
+            try {
+                if (this["kpp"].toString().toLong() <= 0) errors["kpp"] = t("Указан некорректный КПП")
+                return
+            } catch (e:Exception) {
+                errors["kpp"] = t("Указан некорректный КПП")
+                return
+            }
+        }
+    }
 }
 
 enum class CompanyTypes(code:Int) {

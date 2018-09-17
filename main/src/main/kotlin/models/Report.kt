@@ -10,7 +10,7 @@ import java.io.Serializable
  * Class defines Report model. Inherits and overrides methods of Model class and works
  * specifically for it data.
  */
-class Report: Model() {
+class Report: Document() {
 
     // Database types of all fields in model
     override val fieldTypes: HashMap<String, Serializable>
@@ -27,70 +27,43 @@ class Report: Model() {
         get() = "Reports"
 
     override fun validate(isNew:Boolean,user_id:String?): HashMap<String,Any>? {
-        val errors = HashMap<String,Any>()
-        if (this["date"] == null) {
-            errors["date"] = t("Не указана дата отчета")
-        } else {
-            try {
-                val date = this["date"] as Long
-                if (date <= 0) errors["date"] = t("Указана некорректная дата отчета")
-            } catch (e: Exception) {
-                errors["date"] = t("Указана некорректная дата отчета")
-            }
-        }
+        super.validate(isNew, user_id)
+        validateDate()
+        validatePeriod()
+        validateType()
+        validateCompany(user_id)
+        validateEmail()
+        return getValidationResult()
+    }
 
-        if (this["email"] !== null && this["email"].toString().isNotEmpty()) {
-            if (!isValidEmail(this["email"].toString())) {
-                errors["email"] = t("Указан некорректный email")
-            }
-        }
-
-        if (this["period"] == null) {
-            errors["period"] = t("Не указан период отчета")
-        } else {
-            try {
-                val period = this["period"] as Long
-                if (period <= 0) errors["period"] = t("Указана некорректный период отчета")
-            } catch (e: Exception) {
-                errors["period"] = t("Указан некорректный период отчета")
-            }
-        }
-
+    private fun validateType() {
         if (this["type"] == null) {
             errors["type"] = t("Не указан тип отчета")
         } else if (!ReportTypes.containsKey(this["type"])) {
             errors["type"] = t("Указан некорректный тип отчета")
         }
-
-
-        if (this["company"] == null) {
-            errors["company"] = t("Не указана организация")
-        } else {
-            if (this["company"].toString().trim().isEmpty()) {
-                errors["company"] = "Не указана организация"
-            }
-        }
-
-        if (errors.keys.size != 0) {
-            return errors
-        }
-
-        var condition = "@rid=${this["company"]}"
-        val options = hashMapOf("condition" to condition)
-        var items = Company().getList(options as? HashMap<String, Any>,user_id)
-        if (items.size == 0) errors["company"] = t("Выбрана некорректная организация")
-
-        condition = "type=${this["type"]} AND period=${this["period"]}"
-        if (!isNew) {
-            condition += " AND @rid!=#${this["uid"].toString().replace("_",":")}"
-        }
-
-        items = Report().getList(options as? HashMap<String, Any>)
-        if (items.size > 0) errors["period"] = t("Отчет данного типа за этот период уже существует")
-
-        return if (errors.keys.size > 0) errors else null
     }
 
+    private fun validateEmail() {
+        if (this["email"] !== null && this["email"].toString().isNotEmpty()) {
+            if (!isValidEmail(this["email"].toString())) {
+                errors["email"] = t("Указан некорректный email")
+            }
+        }
+    }
+
+    private fun validatePeriod() {
+        if (this["period"] == null) {
+            errors["period"] = t("Не указан период отчета")
+        } else {
+            try {
+                val period = this["period"].toString().toLong()
+                if (period <= 0) errors["period"] = t("Указана некорректный период отчета")
+            } catch (e: Exception) {
+                errors["period"] = t("Указан некорректный период отчета")
+            }
+        }
+    }
 }
 
 /**
