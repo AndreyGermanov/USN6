@@ -73,7 +73,7 @@ class CompaniesControllerTests {
         request = mapOf("name" to "company1", "inn" to "4324233")
         responseJson = TestEnvironment.parseResponse(khttp.post(baseUrl,data=gson.toJson(request),headers=headers))!!
         assertNull(TestEnvironment.getError(responseJson,"inn"),
-                "Should not return error if orrect INN specified")
+                "Should not return error if correct INN specified")
         assertNotNull(TestEnvironment.getError(responseJson,"address"),
                 "Should return error if address not specified")
         assertNotNull(TestEnvironment.getError(responseJson,"type"),
@@ -173,7 +173,7 @@ class CompaniesControllerTests {
         var responseJson = TestEnvironment.parseResponse(khttp.post(baseUrl, data = gson.toJson(request), headers = headers))!!
         var result = responseJson["result"] as JSONObject
         val uid1 = result["uid"].toString().replace("#","").replace(":","_")
-        request = mapOf("name" to "company2", "inn" to "145323534", "type" to "1", "kpp" to "2342324", "address" to "Addr2")
+        request = mapOf("name" to "company2", "inn" to "1453534", "type" to "1", "kpp" to "", "address" to "Addr2")
         responseJson = TestEnvironment.parseResponse(khttp.post(baseUrl, data = gson.toJson(request), headers = headers))!!
         result = responseJson["result"] as JSONObject
         val uid2 = result["uid"].toString().replace("#","").replace(":","_")

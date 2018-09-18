@@ -4,6 +4,8 @@ import db.DBManager
 import db.Database
 import i18n.t
 import org.json.JSONObject
+import utils.ModelValidator
+import utils.ValidationResult
 import java.util.concurrent.ConcurrentHashMap
 import java.io.Serializable
 
@@ -14,6 +16,15 @@ import java.io.Serializable
 open class Model {
     // Actual data record, which this model represents
     private var item = ConcurrentHashMap<String,Any>()
+    protected lateinit var validator:ModelValidator
+    val errorDescriptions = HashMap<String,HashMap<ValidationResult,String>>()
+
+    init {
+        errorDescriptions["company"] = hashMapOf(
+                ValidationResult.EMPTY_VALUE to t("Не указана организация"),
+                ValidationResult.INCORRECT_VALUE to t("Указана некорректная организация")
+        )
+    }
 
     /**
      * Name of model in database
@@ -245,20 +256,32 @@ open class Model {
      * @return: Either Hashmap<String,String> with errors or null if no errors
      */
     open fun validate(isNew:Boolean = false,user_id:String?=null):HashMap<String,Any>? {
-        errors.clear()
+//        errors.clear()
+        this.validator = ModelValidator(this)
         return getValidationResult()
     }
 
+    /**
+     * Method returns array of errors, which is determined during model validation process
+     * @returns HashMap in which keys are field names and values are error messages about that fields.
+     * If no validation errors, null returned
+     */
     fun getValidationResult():HashMap<String,Any>? {
-        return if (errors.keys.size > 0) errors else null
+        val result = HashMap<String,Any>()
+        for (key in errors.keys) {
+            if (errors[key].toString().isNotEmpty())
+                result[key] = errors[key].toString()
+        }
+        return if (result.keys.size > 0) result else null
     }
 
+    /**
+     * Method used to validate if company specified for current model is exist in database
+     */
     protected fun validateCompany(user_id:String?) {
-        if (this["company"] == null || this["company"].toString().trim().isEmpty()) {
-            errors["company"] = t("Не указана организация")
-            return
-        }
-        val items = Company().getList(hashMapOf("condition" to "@rid=${this["company"]}"),user_id)
-        if (items.size == 0) errors["company"] = t("Выбрана некорректная организация")
+        errors["company"] = validator.getErrorMessage("company",validator.validateString(this["company"]))
+        if (errors["company"].toString().isNotEmpty()) return
+        errors["company"] = validator.getErrorMessage("company",
+                validator.validateModelExist(this["company"],Company(),user_id))
     }
 }

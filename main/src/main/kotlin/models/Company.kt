@@ -1,6 +1,7 @@
 package models
 
 import i18n.t
+import utils.ValidationResult
 import java.io.Serializable
 
 @Suppress("UNCHECKED_CAST")
@@ -21,98 +22,74 @@ class Company: Model() {
                 "address" to hashMapOf("type" to "String")
         )
 
+    init {
+        errorDescriptions["name"] = hashMapOf(
+            ValidationResult.EMPTY_VALUE to t("Не указано наименование")
+        )
+        errorDescriptions["address"] = hashMapOf(
+            ValidationResult.EMPTY_VALUE to t("Не указан адрес")
+        )
+        errorDescriptions["inn"] = hashMapOf(
+            ValidationResult.EMPTY_VALUE to t("Не указан ИНН"),
+            ValidationResult.INCORRECT_VALUE to t("Указан некорректный ИНН"),
+            ValidationResult.DUPLICATE_VALUE to t("Организация с таким ИНН уже есть в базе")
+        )
+        errorDescriptions["kpp"] = hashMapOf(
+                ValidationResult.EMPTY_VALUE to t("Не указан КПП"),
+                ValidationResult.INCORRECT_VALUE to t("Указана некорректный КПП")
+        )
+        errorDescriptions["type"] = hashMapOf(
+                ValidationResult.EMPTY_VALUE to t("Не указан тип организации"),
+                ValidationResult.INCORRECT_VALUE to t("Указана некорректный тип организации")
+        )
+    }
+
     override val modelName:String
         get() = "Companies"
 
     override fun validate(isNew:Boolean,user_id:String?): HashMap<String,Any>? {
         super.validate(isNew, user_id)
-        validateName()
-        validateInn(isNew,user_id)
-        validateAddress()
+        validateName();validateInn(isNew,user_id);validateAddress()
         val type = validateType() ?: return getValidationResult()
         validateKpp(type)
         return getValidationResult()
     }
 
     private fun validateName() {
-        if (this["name"] == null || this["name"].toString().trim().isEmpty())
-            errors["name"] = t("Не указано наименование")
+        errors["name"] = validator.getErrorMessage("name", validator.validateString(this["name"]))
     }
 
     private fun validateAddress() {
-        if (this["address"] == null || this["address"].toString().trim().isEmpty())
-            errors["address"] = "Не указан адрес"
+        errors["address"] = validator.getErrorMessage("address", validator.validateString(this["address"]))
     }
 
     private fun validateInn(isNew:Boolean,user_id:String?) {
-        if (this["inn"] == null) {
-            errors["inn"] = t("Не указан ИНН")
-            return
-        }
-        try {
-            if (this["inn"].toString().toLong() <= 0) {
-                errors["inn"] = t("Указан некорректный ИНН")
-                return
-            }
-        } catch (e: Exception) {
-            errors["inn"] = t("Указан некорректный ИНН")
-            return
-        }
-
-        var condition = "inn='${this["inn"]}'"
-        if (!isNew) {
-            condition += " AND @rid!=${this["uid"].toString().replace("_",":")}"
-        }
-        val options = hashMapOf(
-                "condition" to condition
-        )
-        val items = getList(options as? HashMap<String, Any>,user_id)
-        if (items.size>0) {
-            errors["inn"] = t("Организация с таким ИНН уже есть в базе")
-        }
+        errors["inn"] = validator.getErrorMessage("inn",validator.validateLong(this["inn"]))
+        if (errors["inn"].toString().isNotEmpty()) return
+        errors["inn"] = validator.getErrorMessage("inn",
+                validator.validateDuplicate("inn",this["inn"],isNew,user_id))
     }
 
     private fun validateType(): Int? {
-        if (this["type"] == null) {
-            errors["type"] = t("Не указан тип организации")
-            return null
-        }
-        try {
-            val type =  Integer.valueOf((this["type"].toString().toLong()).toString())
-            if (type != 1 && type != 2) {
-                errors["type"] = t("Указан некорректный тип организации")
-                return null
-            }
-            return type
-        } catch (e: Exception) {
-            errors["type"] = t("Указан некорректный тип организации")
-            return null
-        }
+        errors["type"] = validator.getErrorMessage("type",validator.validateLong(this["type"]))
+        if (errors["type"].toString().isNotEmpty()) return null
+        val type = this["type"].toString().toInt()
+        errors["type"] = validator.getErrorMessage("type",validator.validateInList(type, CompanyTypes as HashMap<Any, Any>))
+        return type
     }
 
     private fun validateKpp(type:Int) {
-        if (this["kpp"] == null && type.equals(2)) {
-            errors["kpp"] = t("Не указан КПП")
-            return
-        }
-        if (this["kpp"] != null && !type.equals(1)) {
-            try {
-                if (this["kpp"].toString().toLong() <= 0) errors["kpp"] = t("Указан некорректный КПП")
-                return
-            } catch (e:Exception) {
-                errors["kpp"] = t("Указан некорректный КПП")
-                return
-            }
+        when (type) {
+            1 -> if (this["kpp"].toString().isNotEmpty()) errors["kpp"] = errorDescriptions["kpp"]!![ValidationResult.INCORRECT_VALUE]!!
+            2 -> errors["kpp"] = validator.getErrorMessage("kpp",validator.validateLong(this["kpp"]))
         }
     }
 }
 
-enum class CompanyTypes(code:Int) {
-    IP(1),OOO(2);
-    fun getCode(type:CompanyTypes):Int {
-        return when (type) {
-            IP -> 1
-            OOO -> 2
-        }
-    }
-}
+/**
+ * List of allowed spending types
+ */
+var CompanyTypes = hashMapOf(
+        1 to t("Индивидуальный предприниматель"),
+        2 to t("Общество с ограниченной ответственностью")
+)

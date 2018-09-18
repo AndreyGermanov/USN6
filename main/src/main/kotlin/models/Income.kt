@@ -1,6 +1,7 @@
 package models
 
 import i18n.t
+import utils.ValidationResult
 import java.io.Serializable
 
 
@@ -22,21 +23,22 @@ class Income: Document() {
                 "company" to hashMapOf("type" to "Link","display_field" to "name")
         )
 
+    init {
+        errorDescriptions["description"] = hashMapOf(
+                ValidationResult.EMPTY_VALUE to t("Не указано описание")
+        )
+    }
+
     override val modelName:String
         get() = "Income"
 
     override fun validate(isNew:Boolean,user_id:String?): HashMap<String,Any>? {
         super.validate(isNew,user_id)
-        validateNumber()
-        validateDate()
-        validateDescription()
-        validateAmount()
-        validateCompany(user_id)
+        validateNumber();validateDate();validateDescription();validateAmount();validateCompany(user_id)
         return getValidationResult()
     }
 
     private fun validateDescription() {
-        if (this["description"] == null || this["description"].toString().trim().isEmpty())
-            errors["description"] = t("Не указано описание операции")
+        errors["description"] = validator.getErrorMessage("description",validator.validateString(this["description"]))
     }
 }

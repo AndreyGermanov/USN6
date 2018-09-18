@@ -229,6 +229,7 @@ fun Routing.crud(modelName:String,ctrl:CRUDControllerInterface) {
         val user_id = call.authentication.principal<UserIdPrincipal>()?.name
         try {
             val result = ctrl.postItem(call.receiveText(),user_id)
+
             if (result.containsKey("uid")) {
                 call.respond(HttpStatusCode.OK, gson.toJson(hashMapOf("status" to "ok", "result" to result)))
             } else {

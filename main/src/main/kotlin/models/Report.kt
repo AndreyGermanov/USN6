@@ -2,7 +2,9 @@ package models
 
 import utils.isValidEmail
 import i18n.t
+import utils.ValidationResult
 import java.io.Serializable
+import kotlin.reflect.jvm.internal.ReflectProperties
 
 
 @Suppress("UNCHECKED_CAST")
@@ -23,25 +25,34 @@ class Report: Document() {
                 "email" to hashMapOf("type" to "String")
         )
 
+    init {
+        errorDescriptions["type"] = hashMapOf(
+            ValidationResult.EMPTY_VALUE to t("Не указан тип отчета"),
+            ValidationResult.INCORRECT_VALUE to t("Указан некорректный тип отчета")
+        )
+        errorDescriptions["email"] = hashMapOf(
+            ValidationResult.INCORRECT_VALUE to t("Указан некорректный email")
+        )
+        errorDescriptions["period"] = hashMapOf(
+            ValidationResult.EMPTY_VALUE to t("Не указан период отчета"),
+            ValidationResult.INCORRECT_VALUE to t("Указан некорректный период отчета")
+        )
+    }
+
     override val modelName:String
         get() = "Reports"
 
     override fun validate(isNew:Boolean,user_id:String?): HashMap<String,Any>? {
         super.validate(isNew, user_id)
-        validateDate()
-        validatePeriod()
-        validateType()
-        validateCompany(user_id)
-        validateEmail()
+        validateDate();validatePeriod();validateType();validateCompany(user_id);validateEmail()
         return getValidationResult()
     }
 
     private fun validateType() {
-        if (this["type"] == null) {
-            errors["type"] = t("Не указан тип отчета")
-        } else if (!ReportTypes.containsKey(this["type"])) {
-            errors["type"] = t("Указан некорректный тип отчета")
-        }
+        errors["type"] = validator.getErrorMessage("type",validator.validateString(this["type"]))
+        if (errors["type"].toString().isNotEmpty()) return
+        errors["type"] = validator.getErrorMessage("type",
+                validator.validateInList(this["type"]!!,ReportTypes as HashMap<Any,Any>))
     }
 
     private fun validateEmail() {
@@ -53,16 +64,7 @@ class Report: Document() {
     }
 
     private fun validatePeriod() {
-        if (this["period"] == null) {
-            errors["period"] = t("Не указан период отчета")
-        } else {
-            try {
-                val period = this["period"].toString().toLong()
-                if (period <= 0) errors["period"] = t("Указана некорректный период отчета")
-            } catch (e: Exception) {
-                errors["period"] = t("Указан некорректный период отчета")
-            }
-        }
+        errors["period"] = validator.getErrorMessage("period",validator.validateLong(this["period"]))
     }
 }
 

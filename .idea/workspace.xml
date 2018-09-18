@@ -10,55 +10,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="43c96e8a-f3a9-4eb6-9ca7-504e5208bb9d" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/main/src/main/kotlin/models/Document.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main/src/test/kotlin/controllers/AccountsController.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main/src/test/kotlin/controllers/IncomeController.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main/src/test/kotlin/controllers/SpendingController.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/main/kotlin/utils/ModelValidator.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/out/production/classes/controllers/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/out/production/classes/controllers/Controller.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/out/production/classes/controllers/ControllerKt$crud$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/out/production/classes/controllers/ControllerKt$crud$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/out/production/classes/controllers/ControllerKt$crud$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/out/production/classes/controllers/ControllerKt$crud$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/out/production/classes/controllers/ControllerKt$crud$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/out/production/classes/controllers/ControllerKt$crud$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/out/production/classes/controllers/ControllerKt$crud$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/out/production/classes/controllers/ControllerKt$crud$4.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/out/production/classes/controllers/ControllerKt$root$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/out/production/classes/controllers/ControllerKt$root$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/out/production/classes/controllers/ControllerKt$root$2$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/out/production/classes/controllers/ControllerKt$root$2$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/out/production/classes/controllers/ControllerKt$root$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/out/production/classes/controllers/ControllerKt$root$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/out/production/classes/controllers/ControllerKt.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/out/production/classes/controllers/ControllerKt.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/out/production/classes/controllers/SpendingController.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/out/production/classes/controllers/SpendingController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/out/production/classes/controllers/SpendingControllerKt$spending$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/out/production/classes/controllers/SpendingControllerKt$spending$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/out/production/classes/controllers/SpendingControllerKt.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/out/production/classes/controllers/SpendingControllerKt.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/out/production/classes/models/Account.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/out/production/classes/models/Account.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/out/production/classes/models/Company.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/out/production/classes/models/Company.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/out/production/classes/models/CompanyTypes.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/out/production/classes/models/CompanyTypes.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/out/production/classes/models/Income.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/out/production/classes/models/Income.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/out/production/classes/models/Model.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/out/production/classes/models/Model.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/out/production/classes/models/Report.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/out/production/classes/models/Report.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/out/production/classes/models/ReportKt.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/out/production/classes/models/ReportKt.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/out/production/classes/models/Spending.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/out/production/classes/models/Spending.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/out/production/classes/models/SpendingKt.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/out/production/classes/models/SpendingKt.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/out/test/classes/controllers/CompaniesControllerTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/out/test/classes/controllers/CompaniesControllerTests.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/out/test/classes/controllers/ControllerTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/out/test/classes/controllers/ControllerTests.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/out/test/classes/controllers/MockController.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/out/test/classes/controllers/MockController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/out/test/classes/controllers/ReportsControllerTests$generateHTMLMultithreadExternalTests$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/out/test/classes/controllers/ReportsControllerTests$generateHTMLMultithreadExternalTests$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/out/test/classes/controllers/ReportsControllerTests$generateHTMLMultithreadExternalTests$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/out/test/classes/controllers/ReportsControllerTests$generateHTMLMultithreadExternalTests$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/out/test/classes/controllers/ReportsControllerTests$generatePDFMultithreadInternalTests$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/out/test/classes/controllers/ReportsControllerTests$generatePDFMultithreadInternalTests$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/out/test/classes/controllers/ReportsControllerTests$generatePDFMultithreadInternalTests$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/out/test/classes/controllers/ReportsControllerTests$generatePDFMultithreadInternalTests$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/out/test/classes/controllers/ReportsControllerTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/out/test/classes/controllers/ReportsControllerTests.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/out/test/classes/controllers/UsersControllerTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/out/test/classes/controllers/UsersControllerTests.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/out/test/classes/reports/ReportKudirTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/out/test/classes/reports/ReportKudirTests.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/out/test/classes/utils/TestEnvironment$createEnvironment$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/out/test/classes/utils/TestEnvironment.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/out/test/classes/utils/TestEnvironment.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/src/main/kotlin/controllers/Controller.kt" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/kotlin/controllers/Controller.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/src/main/kotlin/controllers/SpendingController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/kotlin/controllers/SpendingController.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/src/main/kotlin/db/orientdb/ListQueryBuilder.kt" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/kotlin/db/orientdb/ListQueryBuilder.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/src/main/kotlin/models/Account.kt" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/kotlin/models/Account.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/src/main/kotlin/models/Company.kt" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/kotlin/models/Company.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/src/main/kotlin/models/Document.kt" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/kotlin/models/Document.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/src/main/kotlin/models/Income.kt" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/kotlin/models/Income.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/src/main/kotlin/models/Model.kt" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/kotlin/models/Model.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/src/main/kotlin/models/Report.kt" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/kotlin/models/Report.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/src/main/kotlin/models/Spending.kt" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/kotlin/models/Spending.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/src/test/kotlin/controllers/AccountsController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/test/kotlin/controllers/AccountsController.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/src/test/kotlin/controllers/CompaniesController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/test/kotlin/controllers/CompaniesController.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/src/test/kotlin/controllers/ControllerTests.kt" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/test/kotlin/controllers/ControllerTests.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/src/test/kotlin/controllers/ReportsController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/test/kotlin/controllers/ReportsController.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/src/test/kotlin/controllers/UsersController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/test/kotlin/controllers/UsersController.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/src/test/kotlin/utils/TestEnvironment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/test/kotlin/utils/TestEnvironment.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/WAB3_jar/WAB3.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/WAB3_jar/WAB3.jar" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -125,29 +97,20 @@
       <file leaf-file-name="Model.kt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main/src/main/kotlin/models/Model.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="20" column="7" lean-forward="true" selection-start-line="20" selection-start-column="7" selection-end-line="20" selection-end-column="7" />
-              <folding>
-                <element signature="e#16#169#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="757">
+              <caret line="266" column="45" selection-start-line="266" selection-start-column="45" selection-end-line="266" selection-end-column="45" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Document.kt" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Document.kt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main/src/main/kotlin/models/Document.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" column="74" selection-start-line="5" selection-start-column="74" selection-end-line="5" selection-end-column="74" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ReportsController.kt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main/src/test/kotlin/controllers/ReportsController.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="427">
-              <caret line="275" column="25" lean-forward="true" selection-start-line="275" selection-start-column="25" selection-end-line="275" selection-end-column="25" />
+            <state relative-caret-position="525">
+              <caret line="35" column="5" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
+              <folding>
+                <element signature="e#16#59#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -155,8 +118,8 @@
       <file leaf-file-name="Income.kt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main/src/main/kotlin/models/Income.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="532">
-              <caret line="40" column="5" selection-start-line="40" selection-start-column="5" selection-end-line="40" selection-end-column="5" />
+            <state relative-caret-position="360">
+              <caret line="26" column="26" lean-forward="true" selection-start-line="26" selection-start-column="26" selection-end-line="26" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -164,8 +127,8 @@
       <file leaf-file-name="Company.kt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main/src/main/kotlin/models/Company.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-510">
-              <caret line="33" column="36" lean-forward="true" selection-start-line="33" selection-start-column="8" selection-end-line="33" selection-end-column="36" />
+            <state relative-caret-position="562">
+              <caret line="45" selection-start-line="45" selection-end-line="45" />
             </state>
           </provider>
         </entry>
@@ -173,20 +136,8 @@
       <file leaf-file-name="Account.kt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main/src/main/kotlin/models/Account.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="532">
-              <caret line="72" column="5" selection-start-line="72" selection-start-column="5" selection-end-line="72" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IncomeController.kt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main/src/test/kotlin/controllers/IncomeController.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="277">
-              <caret line="135" column="27" lean-forward="true" selection-start-line="135" selection-start-column="27" selection-end-line="135" selection-end-column="27" />
-              <folding>
-                <element signature="e#21#246#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="697">
+              <caret line="57" column="83" lean-forward="true" selection-start-line="57" selection-start-column="83" selection-end-line="57" selection-end-column="83" />
             </state>
           </provider>
         </entry>
@@ -194,19 +145,10 @@
       <file leaf-file-name="Report.kt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main/src/main/kotlin/models/Report.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="645">
-              <caret line="45" lean-forward="true" selection-start-line="45" selection-end-line="45" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AccountsController.kt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main/src/test/kotlin/controllers/AccountsController.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="81" column="58" selection-start-line="81" selection-start-column="58" selection-end-line="81" selection-end-column="58" />
+            <state relative-caret-position="255">
+              <caret line="17" column="58" lean-forward="true" selection-start-line="17" selection-start-column="58" selection-end-line="17" selection-end-column="58" />
               <folding>
-                <element signature="e#21#246#0" expanded="true" />
+                <element signature="e#16#166#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -215,11 +157,38 @@
       <file leaf-file-name="Spending.kt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main/src/main/kotlin/models/Spending.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-120">
-              <caret line="16" selection-start-line="16" selection-end-line="16" />
+            <state relative-caret-position="645">
+              <caret line="58" column="72" lean-forward="true" selection-start-line="58" selection-start-column="72" selection-end-line="58" selection-end-column="72" />
               <folding>
                 <element signature="e#16#57#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="User.kt" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/main/src/main/kotlin/models/User.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="397">
+              <caret line="80" lean-forward="true" selection-start-line="80" selection-end-line="80" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UsersController.kt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main/src/test/kotlin/controllers/UsersController.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="367">
+              <caret line="82" column="31" selection-start-line="82" selection-start-column="31" selection-end-line="82" selection-end-column="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UsersController.kt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main/src/main/kotlin/controllers/UsersController.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="481">
+              <caret line="105" column="48" selection-start-line="105" selection-start-column="42" selection-end-line="105" selection-end-column="48" />
             </state>
           </provider>
         </entry>
@@ -255,6 +224,7 @@
       <find>queryStringToJSON</find>
       <find>JSONToHashMap</find>
       <find>field_types</find>
+      <find>CompanyTypes</find>
       <find>println</find>
     </findStrings>
   </component>
@@ -965,7 +935,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/main/src/main/kotlin/controllers/Accounts.kt" />
         <option value="$PROJECT_DIR$/main/src/main/kotlin/controllers/Income.kt" />
         <option value="$PROJECT_DIR$/main/src/main/resources/deleteReferences" />
         <option value="$PROJECT_DIR$/main/src/main/kotlin/Logger/Logger.kt" />
@@ -982,7 +951,6 @@
         <option value="$PROJECT_DIR$/main/src/test/kotlin/reports/ReportKudir.kt" />
         <option value="$PROJECT_DIR$/config.json" />
         <option value="$PROJECT_DIR$/main/src/main/kotlin/controllers/ReportsController.kt" />
-        <option value="$PROJECT_DIR$/main/src/main/kotlin/models/User.kt" />
         <option value="$PROJECT_DIR$/main/src/main/kotlin/Utils/Utils.kt" />
         <option value="$PROJECT_DIR$/main/src/main/kotlin/utils/Utils.kt" />
         <option value="$PROJECT_DIR$/main/src/main/kotlin/system/ConfigManager.kt" />
@@ -997,25 +965,27 @@
         <option value="$PROJECT_DIR$/main/src/main/kotlin/db/orientdb/OrientDatabase.kt" />
         <option value="$PROJECT_DIR$/main/src/test/kotlin/controllers/UsersController.kt" />
         <option value="$PROJECT_DIR$/main/src/test/kotlin/controllers/ControllerTests.kt" />
-        <option value="$PROJECT_DIR$/main/src/main/kotlin/models/Company.kt" />
         <option value="$PROJECT_DIR$/main/src/main/kotlin/db/orientdb/CrudRunner.kt" />
-        <option value="$PROJECT_DIR$/main/src/test/kotlin/controllers/CompaniesController.kt" />
         <option value="$PROJECT_DIR$/main/src/main/kotlin/db/orientdb/ListQueryBuilder.kt" />
-        <option value="$PROJECT_DIR$/main/src/test/kotlin/controllers/AccountsController.kt" />
         <option value="$PROJECT_DIR$/main/src/main/kotlin/controllers/SpendingController.kt" />
-        <option value="$PROJECT_DIR$/main/src/main/kotlin/controllers/Controller.kt" />
         <option value="$PROJECT_DIR$/main/src/test/kotlin/utils/TestEnvironment.kt" />
         <option value="$PROJECT_DIR$/main/src/test/kotlin/controllers/IncomeController.kt" />
         <option value="$PROJECT_DIR$/main/src/test/kotlin/controllers/SpendingController.kt" />
         <option value="$PROJECT_DIR$/main/src/main/kotlin/reports/ReportKudir.kt" />
         <option value="$PROJECT_DIR$/main/src/main/kotlin/db/orientdb/Request.kt" />
         <option value="$PROJECT_DIR$/main/src/test/kotlin/controllers/ReportsController.kt" />
-        <option value="$PROJECT_DIR$/main/src/main/kotlin/models/Model.kt" />
+        <option value="$PROJECT_DIR$/main/src/main/kotlin/models/Document.kt" />
         <option value="$PROJECT_DIR$/main/src/main/kotlin/models/Account.kt" />
+        <option value="$PROJECT_DIR$/main/src/main/kotlin/controllers/Controller.kt" />
+        <option value="$PROJECT_DIR$/main/src/test/kotlin/controllers/AccountsController.kt" />
+        <option value="$PROJECT_DIR$/main/src/test/kotlin/controllers/CompaniesController.kt" />
         <option value="$PROJECT_DIR$/main/src/main/kotlin/models/Income.kt" />
         <option value="$PROJECT_DIR$/main/src/main/kotlin/models/Spending.kt" />
+        <option value="$PROJECT_DIR$/main/src/main/kotlin/models/Model.kt" />
+        <option value="$PROJECT_DIR$/main/src/main/kotlin/utils/ModelValidator.kt" />
+        <option value="$PROJECT_DIR$/main/src/main/kotlin/models/Company.kt" />
         <option value="$PROJECT_DIR$/main/src/main/kotlin/models/Report.kt" />
-        <option value="$PROJECT_DIR$/main/src/main/kotlin/models/Document.kt" />
+        <option value="$PROJECT_DIR$/main/src/main/kotlin/models/User.kt" />
       </list>
     </option>
   </component>
@@ -1024,6 +994,12 @@
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand />
+      <select />
+    </treeState>
   </component>
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
@@ -1072,6 +1048,28 @@
               <item name="main/src/test" type="cbb8eebc:String" user="main/src/test" />
               <item name="kotlin" type="cbb8eebc:String" user="kotlin" />
               <item name="controllers" type="cbb8eebc:String" user="controllers" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="AndroidView" />
+      <pane id="PackagesPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="WAB3" type="58d84e3e:PackageViewProjectNode" />
+              <item name="main" type="eaaa3913:PackageViewModuleGroupNode" />
+            </path>
+            <path>
+              <item name="WAB3" type="58d84e3e:PackageViewProjectNode" />
+              <item name="main" type="eaaa3913:PackageViewModuleGroupNode" />
+              <item name="main_main" type="616d4139:PackageViewModuleNode" />
+            </path>
+            <path>
+              <item name="WAB3" type="58d84e3e:PackageViewProjectNode" />
+              <item name="main" type="eaaa3913:PackageViewModuleGroupNode" />
+              <item name="main_test" type="616d4139:PackageViewModuleNode" />
             </path>
           </expand>
           <select />
@@ -1131,25 +1129,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="kotlin" type="462c0819:PsiDirectoryNode" />
-              <item name="db" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="WAB3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WAB3" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="kotlin" type="462c0819:PsiDirectoryNode" />
-              <item name="db" type="462c0819:PsiDirectoryNode" />
-              <item name="orientdb" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="WAB3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WAB3" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="kotlin" type="462c0819:PsiDirectoryNode" />
               <item name="i18n" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -1169,24 +1148,6 @@
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="kotlin" type="462c0819:PsiDirectoryNode" />
               <item name="models" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="WAB3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WAB3" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="kotlin" type="462c0819:PsiDirectoryNode" />
-              <item name="reports" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="WAB3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WAB3" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="kotlin" type="462c0819:PsiDirectoryNode" />
-              <item name="system" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="WAB3" type="b2602c69:ProjectViewProjectNode" />
@@ -1243,28 +1204,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
-      <pane id="PackagesPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="WAB3" type="58d84e3e:PackageViewProjectNode" />
-              <item name="main" type="eaaa3913:PackageViewModuleGroupNode" />
-            </path>
-            <path>
-              <item name="WAB3" type="58d84e3e:PackageViewProjectNode" />
-              <item name="main" type="eaaa3913:PackageViewModuleGroupNode" />
-              <item name="main_main" type="616d4139:PackageViewModuleNode" />
-            </path>
-            <path>
-              <item name="WAB3" type="58d84e3e:PackageViewProjectNode" />
-              <item name="main" type="eaaa3913:PackageViewModuleGroupNode" />
-              <item name="main_test" type="616d4139:PackageViewModuleNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1297,29 +1236,6 @@
   <component name="RunManager" selected="JUnit.SpendingControllerTests">
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-    </configuration>
-    <configuration name="AccountsControllerTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="main_test" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="controllers.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="controllers" />
-      <option name="MAIN_CLASS_NAME" value="controllers.AccountsControllerTests" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <patterns />
     </configuration>
     <configuration name="CompaniesControllerTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="main_test" />
@@ -1381,6 +1297,29 @@
       <option name="MAIN_CLASS_NAME" value="controllers.ReportsControllerTests" />
       <option name="METHOD_NAME" />
       <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
+    </configuration>
+    <configuration name="ReportsControllerTests.deleteItems" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="main_test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="controllers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="controllers" />
+      <option name="MAIN_CLASS_NAME" value="controllers.ReportsControllerTests" />
+      <option name="METHOD_NAME" value="deleteItems" />
+      <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
@@ -1478,19 +1417,19 @@
     <list>
       <item itemvalue="Kotlin.App" />
       <item itemvalue="Kotlin.Deploy" />
-      <item itemvalue="JUnit.ReportsControllerTests" />
-      <item itemvalue="JUnit.AccountsControllerTests" />
       <item itemvalue="JUnit.CompaniesControllerTests" />
       <item itemvalue="JUnit.IncomeControllerTests" />
+      <item itemvalue="JUnit.ReportsControllerTests" />
+      <item itemvalue="JUnit.ReportsControllerTests.deleteItems" />
       <item itemvalue="JUnit.SpendingControllerTests" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.SpendingControllerTests" />
+        <item itemvalue="JUnit.ReportsControllerTests.deleteItems" />
         <item itemvalue="JUnit.ReportsControllerTests" />
         <item itemvalue="JUnit.IncomeControllerTests" />
         <item itemvalue="JUnit.CompaniesControllerTests" />
-        <item itemvalue="JUnit.AccountsControllerTests" />
       </list>
     </recent_temporary>
   </component>
@@ -1518,34 +1457,34 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="ReportsControllerTests_generatePdfTests - 2018.09.17 at 20h 26m 27s.xml">
-      <configuration name="ReportsControllerTests.generatePdfTests" configurationId="JUnit" />
+    <history-entry file="CompaniesControllerTests_postItem - 2018.09.18 at 16h 31m 57s.xml">
+      <configuration name="CompaniesControllerTests.postItem" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ReportsControllerTests_generatePdfTests - 2018.09.17 at 20h 27m 23s.xml">
-      <configuration name="ReportsControllerTests.generatePdfTests" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ReportsControllerTests - 2018.09.17 at 20h 34m 07s.xml">
-      <configuration name="ReportsControllerTests" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ReportsControllerTests - 2018.09.17 at 20h 34m 59s.xml">
-      <configuration name="ReportsControllerTests" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ReportsControllerTests - 2018.09.17 at 20h 35m 36s.xml">
-      <configuration name="ReportsControllerTests" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="AccountsControllerTests - 2018.09.17 at 20h 43m 42s.xml">
-      <configuration name="AccountsControllerTests" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="CompaniesControllerTests - 2018.09.17 at 20h 44m 03s.xml">
+    <history-entry file="CompaniesControllerTests - 2018.09.18 at 16h 32m 25s.xml">
       <configuration name="CompaniesControllerTests" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="IncomeControllerTests - 2018.09.17 at 20h 44m 29s.xml">
+    <history-entry file="CompaniesControllerTests - 2018.09.18 at 16h 33m 08s.xml">
+      <configuration name="CompaniesControllerTests" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CompaniesControllerTests - 2018.09.18 at 16h 33m 38s.xml">
+      <configuration name="CompaniesControllerTests" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CompaniesControllerTests - 2018.09.18 at 16h 34m 03s.xml">
+      <configuration name="CompaniesControllerTests" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="IncomeControllerTests - 2018.09.18 at 16h 37m 26s.xml">
       <configuration name="IncomeControllerTests" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ReportsControllerTests - 2018.09.17 at 20h 45m 07s.xml">
+    <history-entry file="ReportsControllerTests - 2018.09.18 at 16h 43m 49s.xml">
       <configuration name="ReportsControllerTests" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="SpendingControllerTests - 2018.09.17 at 20h 45m 30s.xml">
+    <history-entry file="ReportsControllerTests_deleteItems - 2018.09.18 at 16h 44m 10s.xml">
+      <configuration name="ReportsControllerTests.deleteItems" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SpendingControllerTests - 2018.09.18 at 16h 47m 20s.xml">
+      <configuration name="SpendingControllerTests" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SpendingControllerTests - 2018.09.18 at 16h 48m 47s.xml">
       <configuration name="SpendingControllerTests" configurationId="JUnit" />
     </history-entry>
   </component>
@@ -1572,14 +1511,14 @@
       <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5657174" side_tool="true" weight="0.2516129" />
-      <window_info anchor="right" id="Maven Projects" order="3" />
+      <window_info anchor="right" id="Maven Projects" order="3" weight="0.32968238" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.43428257" visible="true" weight="0.2451613" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32903227" />
       <window_info anchor="bottom" id="Terminal" order="13" weight="0.32903227" />
       <window_info anchor="bottom" id="RNConsole" order="12" weight="0.32903227" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.30887187" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.31270537" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32903227" />
       <window_info anchor="right" id="Gradle" order="3" weight="0.31051478" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -1589,20 +1528,20 @@
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Build" order="9" sideWeight="0.49671412" weight="0.20622987" />
       <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="right" id="Database" order="3" />
+      <window_info anchor="bottom" id="Build" order="9" sideWeight="0.49671412" weight="0.20622987" />
       <window_info anchor="bottom" id="Database Changes" order="10" show_stripe_button="false" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Database" order="3" />
     </layout>
     <layout-to-restore>
       <window_info anchor="bottom" id="Build" order="9" sideWeight="0.49671412" weight="0.20622987" />
       <window_info id="Designer" order="2" />
       <window_info anchor="right" id="Palette" order="3" />
       <window_info id="Image Layers" order="3" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.43428257" visible="true" weight="0.2451613" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.43428257" visible="true" weight="0.2451613" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="4" />
@@ -1612,15 +1551,15 @@
       <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5657174" side_tool="true" weight="0.2516129" />
+      <window_info anchor="bottom" id="Messages" order="11" sideWeight="0.4370208" weight="0.24731183" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Database" order="5" />
       <window_info anchor="bottom" id="RNConsole" order="12" weight="0.32903227" />
       <window_info anchor="bottom" id="Database Changes" order="10" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32903227" />
-      <window_info anchor="right" id="Maven Projects" order="6" />
-      <window_info anchor="right" id="Gradle" order="7" weight="0.31051478" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.30887187" />
-      <window_info anchor="bottom" id="Messages" order="11" sideWeight="0.4370208" weight="0.24731183" />
+      <window_info anchor="right" id="Maven Projects" order="5" weight="0.32968238" />
+      <window_info anchor="right" id="Gradle" order="6" weight="0.31051478" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.31270537" />
+      <window_info anchor="right" id="Database" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32975295" />
       <window_info anchor="right" id="Palette&#9;" order="8" />
@@ -1639,17 +1578,10 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="15" />
+      <option name="time" value="18" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.ktor/ktor-server-core/0.9.1/d2a1b446ffa785ea730f100ac0863b616ea5b23b/ktor-server-core-0.9.1-sources.jar!/io/ktor/request/ApplicationReceiveFunctions.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="765">
-          <caret line="58" selection-start-line="58" selection-end-line="58" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/main/src/main/resources/deleteReferences">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -1762,20 +1694,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main/src/main/kotlin/models/User.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="25" column="37" selection-start-line="25" selection-start-column="37" selection-end-line="25" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/src/main/kotlin/controllers/UsersController.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1875">
-          <caret line="137" column="20" selection-start-line="137" selection-start-column="20" selection-end-line="137" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/main/src/main/kotlin/App.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="705">
@@ -1794,9 +1712,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="570">
           <caret line="41" column="87" selection-start-line="41" selection-start-column="87" selection-end-line="41" selection-end-column="87" />
-          <folding>
-            <element signature="e#21#115#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1831,13 +1746,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main/src/test/kotlin/controllers/UsersController.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="82" column="31" selection-start-line="82" selection-start-column="31" selection-end-line="82" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/main/src/main/kotlin/system/ConfigManager.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -1865,16 +1773,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main/src/test/kotlin/controllers/CompaniesController.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="193" column="42" lean-forward="true" selection-start-line="193" selection-start-column="42" selection-end-line="193" selection-end-column="42" />
-          <folding>
-            <element signature="e#21#220#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/main/src/main/kotlin/controllers/SpendingController.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -1885,37 +1783,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main/src/main/kotlin/controllers/Controller.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="121" column="59" selection-start-line="121" selection-start-column="59" selection-end-line="121" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/main/src/main/kotlin/controllers/IncomeController.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="12" column="26" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/src/test/kotlin/controllers/SpendingController.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="167" column="20" selection-start-line="167" selection-start-column="20" selection-end-line="167" selection-end-column="20" />
-          <folding>
-            <element signature="e#21#246#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/src/test/kotlin/utils/TestEnvironment.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="78" selection-start-line="78" selection-end-line="78" />
-          <folding>
-            <element signature="e#15#403#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1947,9 +1818,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
           <caret line="39" column="9" selection-start-line="39" selection-start-column="9" selection-end-line="39" selection-end-column="9" />
-          <folding>
-            <element signature="e#21#104#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1963,10 +1831,41 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/main/src/main/kotlin/controllers/Controller.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="234" column="20" selection-start-line="234" selection-start-column="20" selection-end-line="234" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/src/test/kotlin/controllers/AccountsController.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1530">
+          <caret line="102" column="123" selection-start-line="102" selection-start-column="123" selection-end-line="102" selection-end-column="123" />
+          <folding>
+            <element signature="e#21#246#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/src/test/kotlin/controllers/CompaniesController.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="184" column="40" lean-forward="true" selection-start-line="184" selection-start-column="40" selection-end-line="184" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/src/test/kotlin/utils/TestEnvironment.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-221">
+          <caret line="78" selection-start-line="78" selection-end-line="78" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/main/src/test/kotlin/controllers/IncomeController.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="277">
-          <caret line="135" column="27" lean-forward="true" selection-start-line="135" selection-start-column="27" selection-end-line="135" selection-end-column="27" />
+        <state relative-caret-position="2025">
+          <caret line="135" column="27" selection-start-line="135" selection-start-column="27" selection-end-line="135" selection-end-column="27" />
           <folding>
             <element signature="e#21#246#0" expanded="true" />
           </folding>
@@ -1975,73 +1874,104 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main/src/test/kotlin/controllers/ReportsController.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="427">
-          <caret line="275" column="25" lean-forward="true" selection-start-line="275" selection-start-column="25" selection-end-line="275" selection-end-column="25" />
+        <state relative-caret-position="210">
+          <caret line="28" column="12" selection-start-line="28" selection-start-column="12" selection-end-line="28" selection-end-column="12" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main/src/main/kotlin/models/Model.kt">
+    <entry file="file://$PROJECT_DIR$/main/src/test/kotlin/controllers/SpendingController.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="7" lean-forward="true" selection-start-line="20" selection-start-column="7" selection-end-line="20" selection-end-column="7" />
-          <folding>
-            <element signature="e#16#169#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/src/main/kotlin/models/Account.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="532">
-          <caret line="72" column="5" selection-start-line="72" selection-start-column="5" selection-end-line="72" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/src/main/kotlin/models/Income.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="532">
-          <caret line="40" column="5" selection-start-line="40" selection-start-column="5" selection-end-line="40" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/src/main/kotlin/models/Spending.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-120">
-          <caret line="16" selection-start-line="16" selection-end-line="16" />
-          <folding>
-            <element signature="e#16#57#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/src/main/kotlin/models/Report.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="645">
-          <caret line="45" lean-forward="true" selection-start-line="45" selection-end-line="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/src/test/kotlin/controllers/AccountsController.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="81" column="58" selection-start-line="81" selection-start-column="58" selection-end-line="81" selection-end-column="58" />
+        <state relative-caret-position="2460">
+          <caret line="167" column="20" selection-start-line="167" selection-start-column="20" selection-end-line="167" selection-end-column="20" />
           <folding>
             <element signature="e#21#246#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/main/src/main/kotlin/utils/ModelValidator.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="622">
+          <caret line="101" column="50" lean-forward="true" selection-start-line="101" selection-start-column="50" selection-end-line="101" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/main/src/main/kotlin/models/Company.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-510">
-          <caret line="33" column="36" lean-forward="true" selection-start-line="33" selection-start-column="8" selection-end-line="33" selection-end-column="36" />
+        <state relative-caret-position="562">
+          <caret line="45" selection-start-line="45" selection-end-line="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/src/main/kotlin/models/Account.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="697">
+          <caret line="57" column="83" lean-forward="true" selection-start-line="57" selection-start-column="83" selection-end-line="57" selection-end-column="83" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main/src/main/kotlin/models/Document.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="74" selection-start-line="5" selection-start-column="74" selection-end-line="5" selection-end-column="74" />
+        <state relative-caret-position="525">
+          <caret line="35" column="5" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
+          <folding>
+            <element signature="e#16#59#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/src/main/kotlin/models/Income.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="26" column="26" lean-forward="true" selection-start-line="26" selection-start-column="26" selection-end-line="26" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/src/main/kotlin/models/Model.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="757">
+          <caret line="266" column="45" selection-start-line="266" selection-start-column="45" selection-end-line="266" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/src/main/kotlin/models/Report.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="58" lean-forward="true" selection-start-line="17" selection-start-column="58" selection-end-line="17" selection-end-column="58" />
+          <folding>
+            <element signature="e#16#166#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/src/main/kotlin/models/Spending.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="645">
+          <caret line="58" column="72" lean-forward="true" selection-start-line="58" selection-start-column="72" selection-end-line="58" selection-end-column="72" />
+          <folding>
+            <element signature="e#16#57#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/src/test/kotlin/controllers/UsersController.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="367">
+          <caret line="82" column="31" selection-start-line="82" selection-start-column="31" selection-end-line="82" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/src/main/kotlin/controllers/UsersController.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="481">
+          <caret line="105" column="48" selection-start-line="105" selection-start-column="42" selection-end-line="105" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/src/main/kotlin/models/User.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="397">
+          <caret line="80" lean-forward="true" selection-start-line="80" selection-end-line="80" />
         </state>
       </provider>
     </entry>

@@ -67,7 +67,8 @@ class AccountsControllerTests {
         assertEquals("error", response.jsonObject["status"].toString(), "Should return error status")
         assertTrue(response.jsonObject.has("errors"), "Should contain errors object with error descriptions")
         var request = mapOf("number" to "123456789")
-        var responseJson = TestEnvironment.parseResponse(khttp.post(baseUrl, data = gson.toJson(request), headers = headers))!!
+        response = khttp.post(baseUrl, data = gson.toJson(request), headers = headers)
+        var responseJson = TestEnvironment.parseResponse(response)!!
         assertNotNull(TestEnvironment.getError(responseJson, "bank_name"),
                 "Should return error if bank_name not specified")
         assertNotNull(TestEnvironment.getError(responseJson, "ks"),

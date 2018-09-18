@@ -1,6 +1,7 @@
 package models
 
 import i18n.t
+import utils.ValidationResult
 import java.io.Serializable
 
 
@@ -27,41 +28,39 @@ class Spending: Document() {
     override val modelName:String
         get() = "Spendings"
 
+    init {
+        errorDescriptions["description"] = hashMapOf(
+                ValidationResult.EMPTY_VALUE to t("Не указано описание")
+        )
+        errorDescriptions["type"] = hashMapOf(
+                ValidationResult.EMPTY_VALUE to t("Не указан тип расходов"),
+                ValidationResult.INCORRECT_VALUE to t("Указан некорректный тип расходов")
+        )
+        errorDescriptions["period"] = hashMapOf(
+                ValidationResult.EMPTY_VALUE to t("Не указан период расходов"),
+                ValidationResult.INCORRECT_VALUE to t("Указан некорректный период расходов")
+        )
+    }
+
     override fun validate(isNew:Boolean,user_id:String?): HashMap<String,Any>? {
         super.validate(isNew, user_id)
-        validateNumber()
-        validateDate()
-        validateDescription()
-        validateAmount()
-        validateType()
-        validatePeriod()
-        validateCompany(user_id)
+        validateNumber();validateDate();validateDescription();validateAmount();validateType();validatePeriod();validateCompany(user_id)
         return getValidationResult()
     }
 
     private fun validatePeriod() {
-        if (this["period"] == null || this["period"].toString().trim().isEmpty())
-            errors["period"] = t("Не указан период расходов")
+        errors["period"] = validator.getErrorMessage("period",validator.validateString(this["period"]))
     }
 
     private fun validateType() {
-        if (this["type"] == null) {
-            errors["type"] = t("Не указан тип расходов")
-        } else {
-            try {
-                val type = this["type"].toString().toInt()
-                if (SpendingTypes[type] == null ) {
-                    errors["type"] = t("Указан некорректный тип расходов")
-                }
-            } catch (e: Exception) {
-                errors["type"] = t("Указан некорректный тип расходов")
-            }
-        }
+        errors["type"] = validator.getErrorMessage("type",validator.validateLong(this["type"]))
+        if (errors["type"].toString().isNotEmpty()) return
+        errors["type"] = validator.getErrorMessage("type",
+                validator.validateInList(this["type"].toString().toInt(),SpendingTypes as HashMap<Any,Any>))
     }
 
     private fun validateDescription() {
-        if (this["description"] == null || this["description"].toString().trim().isEmpty())
-            errors["description"] = t("Не указано описание операции")
+        errors["description"] = validator.getErrorMessage("description",validator.validateString(this["description"]))
     }
 }
 
